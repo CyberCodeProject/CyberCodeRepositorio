@@ -10,6 +10,8 @@ namespace Greicy
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("PROGRAMANDO NO GITHUB BUGGADO");
+            Console.ReadKey();
         }
     }
 }
