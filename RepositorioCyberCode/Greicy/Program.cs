@@ -12,6 +12,7 @@ namespace Greicy
         {
             Console.WriteLine("PROGRAMANDO NO GITHUB BUGGADO");
             Console.ReadKey();
+            Console.WriteLine("\a\a\a\a\a\a\a\a\a\a");
         }
     }
 }
