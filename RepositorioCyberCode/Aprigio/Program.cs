@@ -10,6 +10,7 @@ namespace Aprigio
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Teste");
         }
     }
 }
