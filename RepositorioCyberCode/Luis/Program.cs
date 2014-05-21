@@ -23,16 +23,23 @@ namespace Luis
                 login = Console.ReadLine();
             
             //Apenas a verificacao de teste do login
+            
             while(!login.ToLower().Equals("luis")){
                 Console.WriteLine("Login incorreto! Informe novamente.");
+                Console.Write("* Login : ");
                 login = Console.ReadLine();
             }
 
+            
+            Console.Write("* Senha : "); 
+            senha = int.Parse(Console.ReadLine());
+
             //Apenas a verificacao de teste da senha
-            Console.Write("* Senha : "); senha = int.Parse(Console.ReadLine());
+
             while (senha != 123)
             {
                 Console.WriteLine("Senha incorreta!Informe novamente.");
+                Console.Write("* Senha : ");
                 senha = int.Parse(Console.ReadLine());
             }
             
