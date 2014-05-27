@@ -19,7 +19,8 @@ namespace Greicy
         static string[] Nome = new string[constante];
         static string[] RG = new string[constante];
         static string[] CPF = new string[constante];        
-        static string[,] Endereco = new string[7,constante]; 
+        static string[,] Endereco = new string[7,constante];
+        static double[] Saldo = new double[constante];
         //Endereço: Linha 1 = Pais; Linha 2= Estado; Linha 3 =Cidade; Linha 4= Rua; Linha 5 = Bairro; Linha 6 = Numero; Linha 7 = Complemento
         static void cadastroCarro()
         {            
@@ -68,6 +69,7 @@ namespace Greicy
                 Endereco[clienteCadastrado,5] = Console.ReadLine();
                 Console.Write("Complemento : ");
                 Endereco[clienteCadastrado,6] = Console.ReadLine();
+                Saldo[clienteCadastrado] = 0;
                 clienteCadastrado += 1;
                 Console.Write("\n\nDeseja cadastrar outro cliente ?     (S/N) ");
                 opcao = Console.ReadLine();
