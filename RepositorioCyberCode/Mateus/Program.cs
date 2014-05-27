@@ -17,9 +17,15 @@ namespace Mateus
                 Console.Clear();
                 static string Pesquisa = null;
                 static int Achou = 0;
-                Console.WriteLine("\t\t\t CONSULTA DE CLIENTE :\n");
-                Console.Write("Digite o CPF do cliente : ");
-                Pesquisa = Console.ReadLine();
+                opcao = null;
+                do{
+                    Console.WriteLine("\t\t\t CONSULTA DE CLIENTE :\n");
+                    Console.Write("Digite o CPF do cliente : ");
+                    Pesquisa = Console.ReadLine();
+                    if (Pesquisa.Length != CPF.Length){
+                        Console.WriteLine("CPF invalido, digite no formato correto do CPF (11 digitos).");
+                    }
+                }while(Pesquisa.Length != CPF.Length);
                 for(int i=0; i<constante;i++){
                     if (Pesquisa == CPF[i]){
                         Console.WriteLine("\tNome.........: {0}",Nome[i]);

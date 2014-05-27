@@ -51,10 +51,16 @@ namespace Greicy
                 Console.WriteLine("\t\tCadastrando novo Cliente :\n\n");
                 Console.Write("Nome : ");
                 Nome[clienteCadastrado] = Console.ReadLine();
-                Console.Write("RG : ");
-                RG[clienteCadastrado] = Console.ReadLine();
-                Console.Write("CPF : ");
-                CPF[clienteCadastrado] = Console.ReadLine();
+                do
+                {
+                    Console.Write("RG : (10 digitos)");
+                    RG[clienteCadastrado] = Console.ReadLine();
+                } while (RG[clienteCadastrado].Length != 10 );
+                do
+                {
+                    Console.Write("CPF : (11 digitos)");
+                    CPF[clienteCadastrado] = Console.ReadLine();
+                } while (CPF[clienteCadastrado].Length != 11);
                 Console.Write("Pais : ");
                 Endereco[clienteCadastrado,0] = Console.ReadLine();
                 Console.Write("Estado : ");
