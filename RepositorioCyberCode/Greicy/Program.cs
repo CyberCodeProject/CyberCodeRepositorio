@@ -9,7 +9,9 @@ namespace Greicy
     class Program
     {
         static int carroCadastrado = 0;
+        static int clienteCadastrado = 0;
         static int constante = 20;
+        static string opcao = null;
         static string[] Marca = new string[constante];
         static string[] Placa = new string[constante];
         static string[] Cor = new string[constante];
@@ -22,25 +24,64 @@ namespace Greicy
         static void cadastroCarro()
         {            
             do{
+                opcao = null;
+                Console.Clear();
                 Console.WriteLine("\t\tCadastrando um novo carro no sistema...\n\n");
-                Console.WriteLine("Marca: ");
+                Console.Write("Marca: ");
                 Marca[carroCadastrado] = Console.ReadLine();
-                Console.WriteLine("Placa: \t(XXX-000)");
+                Console.Write("Placa: \t(XXX-000)");
                 Placa[carroCadastrado] = Console.ReadLine();
-                Console.WriteLine("Cor: ");
+                Console.Write("Cor: ");
                 Cor[carroCadastrado] = Console.ReadLine();
-                Console.WriteLine("Km Atual: ");
+                Console.Write("Km Atual: ");
                 Quilometragem[carroCadastrado] = double.Parse(Console.ReadLine());
                 carroCadastrado +=1;
+                Console.Write("\n\nDeseja cadastrar outro automóvel ?     (S/N) ");
+                opcao = Console.ReadLine();
+                opcao = opcao.ToLower();
                 
-            }while();
+            }while( opcao != "n");
+           // Menu();
         }
         static void cadastroCliente(){
+            do{
+                Console.Clear();
+                opcao = null;
+                Console.WriteLine("\t\tCadastrando novo Cliente :\n\n");
+                Console.Write("Nome : ");
+                Nome[clienteCadastrado] = Console.ReadLine();
+                Console.Write("RG : ");
+                RG[clienteCadastrado] = Console.ReadLine();
+                Console.Write("CPF : ");
+                CPF[clienteCadastrado] = Console.ReadLine();
+                Console.Write("Pais : ");
+                Endereco[clienteCadastrado,0] = Console.ReadLine();
+                Console.Write("Estado : ");
+                Endereco[clienteCadastrado,1] = Console.ReadLine();
+                Console.Write("Cidade : ");
+                Endereco[clienteCadastrado,2] = Console.ReadLine();
+                Console.Write("Rua : ");
+                Endereco[clienteCadastrado,3] = Console.ReadLine();
+                Console.Write("Bairro : ");
+                Endereco[clienteCadastrado,4] = Console.ReadLine();
+                Console.Write("Numero : ");
+                Endereco[clienteCadastrado,5] = Console.ReadLine();
+                Console.Write("Complemento : ");
+                Endereco[clienteCadastrado,6] = Console.ReadLine();
+                clienteCadastrado += 1;
+                Console.Write("\n\nDeseja cadastrar outro cliente ?     (S/N) ");
+                opcao = Console.ReadLine();
+                opcao = opcao.ToLower();
+                
+            }while( opcao != "n");
+           // Menu();
+
 
         }
         static void Main(string[] args)
         {
             cadastroCarro();
+            cadastroCliente();
         }
     }
 }
