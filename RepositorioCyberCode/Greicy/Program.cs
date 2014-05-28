@@ -14,6 +14,8 @@ namespace Greicy
         static string opcao = null;
         static string Pesquisa = null;
         static int Achou = 0;
+        static string Resposta = null;
+        static string SenhaTeste = null;
 
         static string[] Marca = new string[constante];
         static string[] Placa = new string[constante];
@@ -58,13 +60,12 @@ namespace Greicy
                 opcao = opcao.ToLower();
                 
             }while( opcao != "n");
-            Menu();
         }
         static void cadastroCliente(){
             do{
                 Console.Clear();
                 opcao = null;
-                Console.WriteLine("\t\tCadastrando novo Cliente :\n\n");
+                Console.WriteLine("\t\t\t CADASTRO CLIENTE :\n\n");
                 Console.Write("Nome : ");
                 Nome[clienteCadastrado] = Console.ReadLine();
                 do
@@ -98,9 +99,6 @@ namespace Greicy
                 opcao = opcao.ToLower();
                 
             }while( opcao != "n");
-            Menu();
-
-
         }
 
         static void ConsultaCliente()
@@ -113,7 +111,7 @@ namespace Greicy
                 do
                 {
                     Console.Clear();
-                    Console.WriteLine("\t\t\t CONSULTA DE CLIENTE :\n");
+                    Console.WriteLine("\t\t\t CONSULTA DE CLIENTE :\n\n");
                     Console.Write("Digite o CPF do cliente : ");
                     Pesquisa = Console.ReadLine();
                     if (Pesquisa.Length != CPF.Length)
@@ -149,7 +147,6 @@ namespace Greicy
                 opcao = opcao.ToLower();
 
             } while (opcao != "n");
-            Menu();
         }
 
         static void ConsultaCarros()
@@ -161,7 +158,7 @@ namespace Greicy
                 opcao = null;
                 do {
                     Console.Clear();
-                    Console.WriteLine("\t\t\t CONSULTA DE CARRO :\n");
+                    Console.WriteLine("\t\t\t CONSULTA DE CARRO :\n\n");
                     Console.Write("Digite a placa do carro : ");
                     Pesquisa = Console.ReadLine();
                     if (Pesquisa.Length != 6){
@@ -189,8 +186,7 @@ namespace Greicy
                 opcao = Console.ReadLine();
                 opcao = opcao.ToLower();
                 
-            }while( opcao != "n");
-            Menu();                
+            }while( opcao != "n");               
         }
 
         static void TabelaPrecoCarros()
@@ -212,17 +208,26 @@ namespace Greicy
                 opcao = opcao.ToLower();
                 
             }while( opcao != "s");
-            Menu(); 
         }
 
-
-        static void SituacaoDaConcessionaria()
+        static void SituacaoDosCarros()
         {
+            opcao = null;
+            Console.Clear();
+            Console.WriteLine("\t\t\t SITUAÇÃO DOS CARROS \n\n");
 
-
-
-
-
+            do{
+                for (int i = 0; i < carroCadastrado; i++)
+                {
+                    Console.WriteLine("Marca............: {0}", Marca[i]);
+                    Console.WriteLine("Local............: {0}", Situacao[i]);
+                    Console.WriteLine("Disponivel em....: {0} dias", DiasLocado[i]+1); 
+                }
+                Console.WriteLine("\n\nDeseja sair da tabela ?      (S/N)");
+                opcao = Console.ReadLine();
+                opcao = opcao.ToLower();
+                
+            }while( opcao != "s");
         }
         static void Main(string[] args)
         {
