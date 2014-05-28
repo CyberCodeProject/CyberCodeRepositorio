@@ -22,6 +22,7 @@ namespace Greicy
         static string[] Situacao = new string[constante];
         static double[] Saldo = new double[constante];
         static int[] DiasLocado = new int[constante];
+        static double[] ValorDiaria = new double[constante];
 
         static string[] Nome = new string[constante];
         static string[] RG = new string[constante];
@@ -49,6 +50,8 @@ namespace Greicy
                 Quilometragem[carroCadastrado] = double.Parse(Console.ReadLine());
                 Situacao[carroCadastrado] = "Garagem";
                 DiasLocado[carroCadastrado] = 0;
+                Console.WriteLine("Qual o valor da diária deste carro ?");
+                ValorDiaria[carroCadastrado] = double.Parse(Console.ReadLine());
                 carroCadastrado +=1;
                 Console.Write("\n\nDeseja cadastrar outro automóvel ?     (S/N) ");
                 opcao = Console.ReadLine();
@@ -174,6 +177,7 @@ namespace Greicy
                         Console.WriteLine("Km Atual.........: {0}",Quilometragem[i]);
                         Console.WriteLine("Situação.........: {0}",Situacao[i]);
                         Console.WriteLine("Disponibilidade..: {0} dias",DiasLocado[i]);
+                        Console.WriteLine("Valor Diária.....: {0}", ValorDiaria[i]);
                         Achou = 1;
 
                      }
@@ -201,9 +205,7 @@ namespace Greicy
                     Console.WriteLine("Marca............: {0}",Marca[i]);
                     Console.WriteLine("Placa............: {0}",Placa[i]);
                     Console.WriteLine("Cor..............: {0}",Cor[i]);
-                    Console.WriteLine("Km Atual.........: {0}",Quilometragem[i]);
-                    Console.WriteLine("Situação.........: {0}",Situacao[i]);
-                    Console.WriteLine("Disponibilidade..: {0} dias",DiasLocado[i]);
+                    Console.WriteLine("Valor Diária.....: {0}",ValorDiaria[i]);
                 }
                 Console.WriteLine("\n\nDeseja sair da tabela ?      (S/N)");
                 opcao = Console.ReadLine();
@@ -211,6 +213,16 @@ namespace Greicy
                 
             }while( opcao != "s");
             Menu(); 
+        }
+
+
+        static void SituacaoDaConcessionaria()
+        {
+
+
+
+
+
         }
         static void Main(string[] args)
         {
