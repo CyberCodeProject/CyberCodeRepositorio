@@ -16,24 +16,25 @@ namespace Greicy
         static int Achou = 0;
         static string Resposta = null;
         static string SenhaTeste = null;
+        static int Posicao = 0;
 
         static string[] Marca = new string[constante];
         static string[] Placa = new string[constante];
         static string[] Cor = new string[constante];
         static double[] Quilometragem = new double[constante];
         static string[] Situacao = new string[constante];
-        static double[] Saldo = new double[constante];
         static int[] DiasLocado = new int[constante];
         static double[] ValorDiaria = new double[constante];
 
         static string[] Nome = new string[constante];
+        static double[] Saldo = new double[constante];
         static string[] RG = new string[constante];
         static string[] CPF = new string[constante];        
         static string[,] Endereco = new string[7,constante];
         //Endereço: Linha 1 = Pais; Linha 2= Estado; Linha 3 =Cidade; Linha 4= Rua; Linha 5 = Bairro; Linha 6 = Numero; Linha 7 = Complemento
 
 
-        static void cadastroCarro()
+        static void cadastro_Carro()
         {            
             do{
                 opcao = null;
@@ -61,7 +62,7 @@ namespace Greicy
                 
             }while( opcao != "n");
         }
-        static void cadastroCliente(){
+        static void cadastro_Cliente(){
             do{
                 Console.Clear();
                 opcao = null;
@@ -101,7 +102,7 @@ namespace Greicy
             }while( opcao != "n");
         }
 
-        static void ConsultaCliente()
+        static void Consulta_Cliente()
         {
             do
             {
@@ -149,7 +150,7 @@ namespace Greicy
             } while (opcao != "n");
         }
 
-        static void ConsultaCarros()
+        static void Consulta_Carros()
         {
 
             do{               
@@ -176,6 +177,7 @@ namespace Greicy
                         Console.WriteLine("Disponibilidade..: {0} dias",DiasLocado[i]);
                         Console.WriteLine("Valor Diária.....: {0}", ValorDiaria[i]);
                         Achou = 1;
+                        Posicao = i;
 
                      }
                 }
@@ -189,7 +191,7 @@ namespace Greicy
             }while( opcao != "n");               
         }
 
-        static void TabelaPrecoCarros()
+        static void Tabela_Preco_Carros()
         {
             do{
                 opcao = null;
@@ -210,7 +212,7 @@ namespace Greicy
             }while( opcao != "s");
         }
 
-        static void SituacaoDosCarros()
+        static void Situacao_Dos_Carros()
         {
             opcao = null;
             Console.Clear();
@@ -223,19 +225,44 @@ namespace Greicy
                     Console.WriteLine("Local............: {0}", Situacao[i]);
                     Console.WriteLine("Disponivel em....: {0} dias", DiasLocado[i]+1); 
                 }
-                Console.WriteLine("\n\nDeseja sair da tabela ?      (S/N)");
+                Console.WriteLine("\n\nDeseja sair da consulta ?      (S/N)");
                 opcao = Console.ReadLine();
                 opcao = opcao.ToLower();
                 
             }while( opcao != "s");
         }
+
+        static void Relatorio_Cliente()
+        {
+
+        }
+
+        static void Relatorio_Carro()
+        {
+
+        }
+
+        static void Relatorio_Renda_Mensal()
+        {
+
+
+        }
+
+        static void Relatorio_Caixa()
+        {
+
+
+        }
+
+
         static void Main(string[] args)
         {
-            cadastroCarro();
-            cadastroCliente();
-            ConsultaCarros();
-            ConsultaCliente();
-            TabelaPrecoCarros();
+            cadastro_Carro();
+            cadastro_Cliente();
+            Consulta_Carros();
+            Consulta_Cliente();
+            Tabela_Preco_Carros();
+            Situacao_Dos_Carros();
 
         }
     }
