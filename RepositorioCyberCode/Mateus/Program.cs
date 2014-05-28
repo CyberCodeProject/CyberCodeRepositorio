@@ -14,9 +14,16 @@ namespace Mateus
             ConsultaCarro();
             if (Achou == 1)
             {
-                Console.WriteLine("Tem certeza que deseja remover este carro? (S/N)");
-                Resposta = Console.ReadLine();
-                Resposta = Resposta.ToUpper();
+                Console.WriteLine("Tem certeza que deseja remover este carro?");
+                do{
+                    Console.WriteLine("S/N)");
+                    Resposta = Console.ReadLine();
+                    Resposta = Resposta.ToUpper();
+                    if (Resposta != 'S' && Resposta != 'N')
+                    {
+                        Console.WriteLine("Resposta incorreta, digite novamente! ");
+                    }
+                }while(Resposta != 'S' && Resposta != 'N');
                 if (Resposta == "S")
                 {
                     Tentativas = 3;
@@ -61,9 +68,16 @@ namespace Mateus
             ConsultaCliente();
             if (Achou == 1)
             {
-                Console.WriteLine("Tem certeza que deseja remover este cliente? (S/N)");
-                Resposta = Console.ReadLine();
-                Resposta = Resposta.ToUpper();
+                Console.WriteLine("Tem certeza que deseja remover este cliente?");
+                do{
+                    Console.WriteLin("(S/N)");
+                    Resposta = Console.ReadLine();
+                    Resposta = Resposta.ToUpper();
+                    if (Resposta != 'S' && Resposta != 'N')
+                    {
+                        Console.WriteLine("Resposta incorreta, digite novamente! ");
+                    }
+                } while (Resposta != 'S' && Resposta != 'N');
                 if (Resposta == "S")
                 {
                     Tentativas = 3;
@@ -191,6 +205,6 @@ namespace Mateus
                     }
                 } while (Opcao != "8");
             }
-        }        
+        }       
     }
 }
