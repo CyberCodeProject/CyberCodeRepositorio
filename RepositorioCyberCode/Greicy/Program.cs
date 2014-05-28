@@ -43,7 +43,14 @@ namespace Greicy
 
         static void Locacao()
         {
+            Posicao = 0;
             Consulta_Cliente();
+            Console.Clear();
+            if (Posicao != 0 )
+            {
+
+
+            }
 
 
 
