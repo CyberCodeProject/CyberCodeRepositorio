@@ -188,13 +188,22 @@ namespace Mateus
                     {
                         case "1": Marca[Posicao] = Console.ReadLine();
                             break;
-                        case "2": Placa[Posicao] = Console.ReadLine();
+                        case "2": 
+                            do{
+                                Console.WriteLine("(XXX-000): ");
+                                Placa[Posicao] = Console.ReadLine();
+                                if(Placa[Posicao].Lenght != 6)
+                                {
+                                    Console.WriteLine("Placa invalida. Digite novamente com 6 digitos!");
+                                }
+                            }while(Placa[Posicao].Lenght != 6);
                             break;
                         case "3": Cor[Posicao] = Console.ReadLine();
                             break;
                         case "4": Quilometragem[Posicao] = Console.ReadLine();
                             break;
-                        case "5": Situacao[Posicao] = Console.ReadLine();
+                        case "5": Console.WriteLine("(Garagem - Rodando - Reservado): ");
+                            Situacao[Posicao] = Console.ReadLine();
                             break;
                         case "6": Disponibilidade[Posicao] = Console.ReadLine();
                             break;
