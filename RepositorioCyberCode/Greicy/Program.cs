@@ -520,7 +520,7 @@ namespace Greicy
 
             Console.Clear();
             Console.WriteLine("\t\t\t RELATORIO DO CAIXA  \n   ");
-            Console.WriteLine("\nTemos {0} carros na garagem.",);
+            Console.WriteLine("\nTemos {0} carros na garagem.");
             Console.WriteLine("   ");
             Console.WriteLine("   ");
             Console.WriteLine("   ");
