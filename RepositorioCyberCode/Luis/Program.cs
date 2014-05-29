@@ -13,7 +13,7 @@ namespace Luis
         static void Main(string[] args)
         {
 
-            Console.Clear();
+            
 
             //Chamando o método MENU
             Menu();
@@ -87,8 +87,8 @@ namespace Luis
             Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
             Console.WriteLine("║                              MENU CADASTRO                             ║");
             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
-            Console.WriteLine("║                         1 - Cadastrar Veiculo                          ║");
-            Console.WriteLine("║                         2 - Cadastrar Cliente                          ║");
+            Console.WriteLine("║                         1 - CADASTRO VEICULO                           ║");
+            Console.WriteLine("║                         2 - CADASTRO CLIENTE                           ║");
             Console.WriteLine("║                         3 - Voltar                                     ║");
             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
 
@@ -120,9 +120,10 @@ namespace Luis
              Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
              Console.WriteLine("║                              MENU CONSULTA                             ║");
              Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
-             Console.WriteLine("║                         1 - Consultar Veiculo                          ║");
-             Console.WriteLine("║                         2 - Consultar Cliente                          ║");
-             Console.WriteLine("║                         3 - Voltar                                     ║");
+             Console.WriteLine("║                         1 - CONSULTAR VEICULO                          ║");
+             Console.WriteLine("║                         2 - CONSULTAR CLIENTE                          ║");
+             Console.WriteLine("║                         3 - SITUACAO DO VEICULO                        ║");
+             Console.WriteLine("║                         4 - Voltar                                     ║");
              Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
 
             
@@ -151,23 +152,51 @@ namespace Luis
          {
              Console.Clear();
 
-             Console.WriteLine("**************************************************************");
-             Console.WriteLine("*                      - MOVIMENTO -                         *");
-             Console.WriteLine("**************************************************************");
-             //Chama o metodo MOVIMENTO
+             Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+             Console.WriteLine("║                             MENU MOVIMENTO                             ║");
+             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+             Console.WriteLine("║                              1 - RESERVA                               ║");
+             Console.WriteLine("║                              2 - LOCACAO                               ║");
+             Console.WriteLine("║                              3 - DEVOLUCAO                             ║");
+             Console.WriteLine("║                              4 - Voltar                                ║");
+             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+             char opcao = char.Parse(Console.ReadLine());
+
+             switch (opcao)
+             {
+
+                 case '1':
+                     //Chama o  metodo RESERVA carro
+                     //ReservaaCarro();
+                     break;
+                 case '2':
+                     //Chamar metodo LOCACAO carro
+                     //Locacao();
+                     break;
+                 case '3': 
+                     //Chamar o metodo DEVOLUCAO carro
+                     break;
+                 case '4': Console.Clear();
+                     Menu();
+                     break;
+                 default: Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
+                     break;
+             }
+             
          }
 
          static void MenuAlteracao()
          {
              Console.Clear();
 
-             Console.WriteLine("**************************************************************");
-             Console.WriteLine("*                      MENU ALTERACAO                        *");
-             Console.WriteLine("**************************************************************");
-             Console.WriteLine("*                   1 - Alterar Veiculo                      *");
-             Console.WriteLine("*                   2 - Alterar Cliente                      *");
-             Console.WriteLine("*                   3 - Voltar                               *");
-             Console.WriteLine("**************************************************************");
+             Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+             Console.WriteLine("║                             MENU ALTERACAO                             ║");
+             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+             Console.WriteLine("║                          1 - ALTERAR VEICULO                           ║");
+             Console.WriteLine("║                          2 - ALTERAR CLIENTE                           ║");
+             Console.WriteLine("║                          3 - Voltar                                    ║");
+             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
 
 
              char opcao = char.Parse(Console.ReadLine());
@@ -175,16 +204,12 @@ namespace Luis
              switch (opcao)
              {
 
-                 case '1': Console.WriteLine("**************************************************************");
-                           Console.WriteLine("*                    ALTERACAO  -  VEICULO                   *");
-                           Console.WriteLine("**************************************************************"); 
-                     //Chama o  metodo Alteracao carro
+                 case '1':  
+                     //Chama o  metodo ALTERACAO carro
 
                      break;
-                 case '2': Console.WriteLine("**************************************************************");
-                           Console.WriteLine("*                    ALTERACAO  -  CLIENTE                   *");
-                           Console.WriteLine("**************************************************************");
-                     //Chamar metodo ALTERACAO cliente
+                 case '2':  
+                    //Chamar metodo ALTERACAO cliente
 
                      break;
                  case '3': Console.Clear();
@@ -199,13 +224,13 @@ namespace Luis
          {
              Console.Clear();
 
-             Console.WriteLine("**************************************************************");
-             Console.WriteLine("*                        MENU REMOCAO                        *");
-             Console.WriteLine("**************************************************************");
-             Console.WriteLine("*                    1 - Remover Veiculo                     *");
-             Console.WriteLine("*                    2 - Remover Cliente                     *");
-             Console.WriteLine("*                    3 - Voltar                              *");
-             Console.WriteLine("**************************************************************");
+             Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+             Console.WriteLine("║                              MENU REMOCAO                              ║");
+             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+             Console.WriteLine("║                          1 - REMOCAO VEICULO                           ║");
+             Console.WriteLine("║                          2 - REMOCAO CLIENTE                           ║");
+             Console.WriteLine("║                          3 - Voltar                                    ║");
+             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
 
 
              char opcao = char.Parse(Console.ReadLine());
@@ -213,16 +238,11 @@ namespace Luis
              switch (opcao)
              {
 
-                 case '1': Console.WriteLine("**************************************************************");
-                           Console.WriteLine("*                     REMOCAO  -  VEICULO                    *");
-                           Console.WriteLine("**************************************************************");
+                 case '1': 
                      //Chama o  metodo REMOCAO carro
 
                      break;
-                 case '2': Console.WriteLine("**************************************************************");
-                           Console.WriteLine("*                     REMOCAO  -  CLIENTE                    *");
-                           Console.WriteLine("**************************************************************");
-                     //Chamar metodo REMOCAO cliente
+                 case '2':                     //Chamar metodo REMOCAO cliente
 
                      break;
                  case '3': Console.Clear();
@@ -247,45 +267,41 @@ namespace Luis
          {
              Console.Clear();
 
-             Console.WriteLine("**************************************************************");
-             Console.WriteLine("*                      MENU RELATORIO                        *");
-             Console.WriteLine("**************************************************************");
-             Console.WriteLine("*                 1 - Relatorio do Veiculo                   *");
-             Console.WriteLine("*                 2 - Relatorio do Cliente                   *");
-             Console.WriteLine("*                 3 - Relatorio da Rensa Mensal              *");
-             Console.WriteLine("*                 4 - Relatorio do Caixa                     *");
-             Console.WriteLine("**************************************************************");
+             Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+             Console.WriteLine("║                             MENU RELATORIO                             ║");
+             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+             Console.WriteLine("║                        1 - RELATORIO DO VEICULO                        ║");
+             Console.WriteLine("║                        2 - RELATORIO DO CLIENTE                        ║");
+             Console.WriteLine("║                        3 - RELATORIO DA RENSA MENSAL                   ║");
+             Console.WriteLine("║                        4 - RELATORIO DO CAIXA                          ║"); 
+             Console.WriteLine("║                        5 - Voltar                                      ║");
+             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
 
+
+             
 
              char opcao = char.Parse(Console.ReadLine());
 
              switch (opcao)
              {
 
-                 case '1': Console.WriteLine("**************************************************************");
-                           Console.WriteLine("*                    RELATORIO  -  VEICULO                   *");
-                           Console.WriteLine("**************************************************************");
+                 case '1': 
                            //Chama o  metodo RELATORIO carro
 
                      break;
-                 case '2': Console.WriteLine("**************************************************************");
-                           Console.WriteLine("*                    RELATORIO  -  CLIENTE                   *");
-                           Console.WriteLine("**************************************************************");
+                 case '2': 
                            //Chamar metodo RELATORIO cliente
 
                      break;
                  case '3': 
-                           Console.WriteLine("**************************************************************");
-                           Console.WriteLine("*              RELATORIO       -     RENDA MENSAL            *");
-                           Console.WriteLine("**************************************************************");
+                           
                            //Chamar metodo RELATORIO reda mensal
                      break;
-                 case '4': Console.WriteLine("**************************************************************");
-                           Console.WriteLine("*                    RELATORIO  -  CAIXA                     *");
-                           Console.WriteLine("**************************************************************");
+                 case '4': 
                           //Chamar metodo RELATORIO do caixa
                      break;
-
+                 case '5': Menu();
+                     break;
                  default: Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                      break;
              }
