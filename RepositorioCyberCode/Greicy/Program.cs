@@ -23,6 +23,9 @@ namespace Greicy
         static double RendaCaixa =0;
         static int PosicaoCliente=0;
         static string[] Usuarios = {"aprigio","luis","mateus","greicy","thiago"};
+        static int garagem = 0;
+        static int rodando = 0;
+        static int reservado = 0;
 
         static string[] Marca = new string[constante];
         static string[] Placa = new string[constante];
@@ -123,6 +126,7 @@ namespace Greicy
                                 Situacao[Posicao] = "Reservado";
                                 DiasLocado[Posicao] += data;
                                 Carro[PosicaoCliente] = Placa[Posicao];
+                                reservado += 1;
                             }
                         } while (Opcao != "n" || Opcao != "s");
                     }
@@ -190,6 +194,8 @@ namespace Greicy
                                 Situacao[Posicao] = "Rodando";
                                 DiasLocado[Posicao] = dia;
                                 Carro[PosicaoCliente] = Placa[Posicao];
+                                rodando += 1;
+                                garagem -= 1;
                             }
                             else{
                                     Console.WriteLine("Carro indisponível. {0}",Situacao[Posicao]);
@@ -247,6 +253,8 @@ namespace Greicy
                         Saldo[PosicaoCliente]=0;
                         RendaMensal += Saldo[Posicao];
                         RendaCaixa += Saldo[Posicao];
+                        garagem += 1;
+                        rodando -= 1;
                         break;
                     }
                     else
@@ -266,20 +274,21 @@ namespace Greicy
                 Console.Clear();
                 Console.WriteLine("\t\tCadastrando um novo Carro \n\n");
                 Console.Write("Marca: ");
-                Marca[CarroCadastrado] = Console.ReadLine();
+                Marca[CarroCadastrado - CarrosRemovidos] = Console.ReadLine();
                 do
                 {
                     Console.Write("Placa: \t(XXX000)");
-                    Placa[CarroCadastrado] = Console.ReadLine();
-                } while (Placa[CarroCadastrado].Length != 6);
+                    Placa[CarroCadastrado - CarrosRemovidos] = Console.ReadLine();
+                } while (Placa[CarroCadastrado - CarrosRemovidos].Length != 6);
                 Console.Write("Cor: ");
-                Cor[CarroCadastrado] = Console.ReadLine();
+                Cor[CarroCadastrado - CarrosRemovidos] = Console.ReadLine();
                 Console.Write("Km Atual: ");
-                Quilometragem[CarroCadastrado] = double.Parse(Console.ReadLine());
-                Situacao[CarroCadastrado] = "Garagem";
-                DiasLocado[CarroCadastrado] = 0;
+                Quilometragem[CarroCadastrado - CarrosRemovidos] = double.Parse(Console.ReadLine());
+                Situacao[CarroCadastrado - CarrosRemovidos] = "Garagem";
+                DiasLocado[CarroCadastrado - CarrosRemovidos] = 0;
                 Console.WriteLine("Qual o valor da diária deste carro ?");
-                ValorDiaria[CarroCadastrado] = double.Parse(Console.ReadLine());
+                ValorDiaria[CarroCadastrado - CarrosRemovidos] = double.Parse(Console.ReadLine());
+                garagem += 1;
                 CarroCadastrado += 1;
                 Console.Write("\n\nDeseja cadastrar outro automóvel ?     (S/N) ");
                 Opcao = Console.ReadLine();
@@ -295,32 +304,32 @@ namespace Greicy
                 Opcao = null;
                 Console.WriteLine("\t\t\t CADASTRO CLIENTE :\n\n");
                 Console.Write("Nome : ");
-                Nome[ClienteCadastrado] = Console.ReadLine();
+                Nome[ClienteCadastrado - ClientesRemovidos] = Console.ReadLine();
                 do
                 {
                     Console.Write("RG : (10 digitos)");
-                    RG[ClienteCadastrado] = Console.ReadLine();
-                } while (RG[ClienteCadastrado].Length != 10);
+                    RG[ClienteCadastrado - ClientesRemovidos] = Console.ReadLine();
+                } while (RG[ClienteCadastrado - ClientesRemovidos].Length != 10);
                 do
                 {
                     Console.Write("CPF : (11 digitos)");
-                    CPF[ClienteCadastrado] = Console.ReadLine();
-                } while (CPF[ClienteCadastrado].Length != 11);
+                    CPF[ClienteCadastrado - ClientesRemovidos] = Console.ReadLine();
+                } while (CPF[ClienteCadastrado - ClientesRemovidos].Length != 11);
                 Console.Write("Pais : ");
-                Endereco[ClienteCadastrado, 0] = Console.ReadLine();
+                Endereco[ClienteCadastrado - ClientesRemovidos, 0] = Console.ReadLine();
                 Console.Write("Estado : ");
-                Endereco[ClienteCadastrado, 1] = Console.ReadLine();
+                Endereco[ClienteCadastrado - ClientesRemovidos, 1] = Console.ReadLine();
                 Console.Write("Cidade : ");
-                Endereco[ClienteCadastrado, 2] = Console.ReadLine();
+                Endereco[ClienteCadastrado - ClientesRemovidos, 2] = Console.ReadLine();
                 Console.Write("Rua : ");
-                Endereco[ClienteCadastrado, 3] = Console.ReadLine();
+                Endereco[ClienteCadastrado - ClientesRemovidos, 3] = Console.ReadLine();
                 Console.Write("Bairro : ");
-                Endereco[ClienteCadastrado, 4] = Console.ReadLine();
+                Endereco[ClienteCadastrado - ClientesRemovidos, 4] = Console.ReadLine();
                 Console.Write("Numero : ");
-                Endereco[ClienteCadastrado, 5] = Console.ReadLine();
+                Endereco[ClienteCadastrado - ClientesRemovidos, 5] = Console.ReadLine();
                 Console.Write("Complemento : ");
-                Endereco[ClienteCadastrado, 6] = Console.ReadLine();
-                Saldo[ClienteCadastrado] = 0;
+                Endereco[ClienteCadastrado - ClientesRemovidos, 6] = Console.ReadLine();
+                Saldo[ClienteCadastrado - ClientesRemovidos] = 0;
                 ClienteCadastrado += 1;
                 Console.Write("\n\nDeseja cadastrar outro cliente ?     (S/N) ");
                 Opcao = Console.ReadLine();
@@ -396,7 +405,7 @@ namespace Greicy
                         continue;
                     }
                 } while (Pesquisa.Length != 6);
-                for (int i = 0; i < CarroCadastrado; i++)
+                for (int i = 0; i < CarroCadastrado - CarrosRemovidos; i++)
                 {
                     if (Pesquisa == Placa[i])
                     {
@@ -429,7 +438,7 @@ namespace Greicy
                 Opcao = null;
                 Console.Clear();
                 Console.WriteLine("\t\t\t TABELA DE PREÇOS \n\n");
-                for (int i = 0; i < CarroCadastrado; i++)
+                for (int i = 0; i < CarroCadastrado - CarrosRemovidos; i++)
                 {
                     Console.WriteLine(" ");
                     Console.WriteLine("Marca............: {0}", Marca[i]);
@@ -450,7 +459,7 @@ namespace Greicy
             {
                 Opcao = null;
                 Console.Clear();
-                for (int i = 0; i < CarroCadastrado; i++)
+                for (int i = 0; i < CarroCadastrado - CarrosRemovidos ; i++)
                 {
                     Console.WriteLine(" ");
                     Console.WriteLine("Marca............: {0}", Marca[i]);
@@ -496,7 +505,7 @@ namespace Greicy
             {
                 Opcao = null;
                 Console.Clear();
-                for (int i = 0; i < CarroCadastrado; i++)
+                for (int i = 0; i < CarroCadastrado - CarrosRemovidos; i++)
                 {
                     Console.WriteLine(" ");
                     Console.WriteLine("Marca............: {0}", Marca[i]);
@@ -514,23 +523,253 @@ namespace Greicy
         }
         static void RelatorioCaixa()
         {
-            int garagem=0;
-            int rua=0;
-            int reservado=0;
-
             Console.Clear();
             Console.WriteLine("\t\t\t RELATORIO DO CAIXA  \n   ");
-            Console.WriteLine("\nTemos {0} carros na garagem.");
-            Console.WriteLine("   ");
-            Console.WriteLine("   ");
-            Console.WriteLine("   ");
-
-
+            Console.WriteLine("\nTemos {0} carros na garagem.",garagem);
+            Console.WriteLine("Temos {0} carros rodando.",rodando);
+            Console.WriteLine("Temos {0} carros reservados.",reservado);
+            Console.WriteLine("Dinheiro em caixa : {0} R$",RendaCaixa);
+            Console.ReadKey();
         }
         static void RelatorioMes()
         {
+            double dinheiroFaltando = 0;
+            Console.Clear();
+            Console.WriteLine("\t\t\t RELATORIO MENSAL  \n   ");
+            Console.WriteLine("\nClientes : {0}", ClienteCadastrado - ClientesRemovidos);
+            Console.WriteLine("Carros : {0}", CarroCadastrado - CarrosRemovidos);
+            Console.WriteLine("Temos {0} carros na garagem.", garagem);
+            Console.WriteLine("Temos {0} carros rodando.", rodando);
+            Console.WriteLine("Temos {0} carros reservados.", reservado);
+            for (int i = 0; i < ClienteCadastrado - ClientesRemovidos; i++)
+            {
+                if (Saldo[i] > 0)
+                {
+                    dinheiroFaltando += Saldo[i];
+                }
+            }
+            Console.WriteLine("Dinheiro : {0} R$", RendaMensal);
+            Console.WriteLine("A receber : {0} R$", dinheiroFaltando);
+            Console.WriteLine("Total = {0} R$", RendaMensal + dinheiroFaltando);
+            Console.ReadKey();
 
         }
+        static void RemoverCarro()
+        {
+            int remover = 0;
+            ConsultaCarros();
+            if (Achou == 1)
+            {
+                Console.WriteLine("Tem certeza que deseja remover este carro?");
+                do
+                {
+                    Console.WriteLine("S/N)");
+                    Resposta = Console.ReadLine();
+                    Resposta = Resposta.ToUpper();
+                    if (Resposta != "S" && Resposta != "N")
+                    {
+                        Console.WriteLine("Resposta incorreta, digite novamente! ");
+                    }
+                } while (Resposta != "S" && Resposta != "N");
+                if (Resposta == "S")
+                {
+                    Tentativas = 3;
+                    do
+                    {
+                        Console.WriteLine("Digite a senha de usuario para confirmar: ");
+                        SenhaTeste = Console.ReadLine();
+                        Tentativas -= 1;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (Usuarios[i] + "123" == SenhaTeste)
+                            {
+                                for (int j = Posicao; j < CarroCadastrado; j++)
+                                {
+                                    Marca[i] = Marca[i + 1];
+                                    Placa[i] = Placa[i + 1];
+                                    Cor[i] = Cor[i + 1];
+                                    Quilometragem[i] = Quilometragem[i + 1];
+                                    Situacao[i] = Situacao[i + 1];
+                                    DiasLocado[i] = DiasLocado[i + 1];
+                                }
+                                CarrosRemovidos += 1;
+                                remover = 1;
+                                break;
+                            }
+                        }
+                        if (remover == 0)
+                        {
+                            Console.WriteLine("Senha incorreta! Tente Novamente... (máximo 3 tentativas)");
+                            if (Tentativas == 3)
+                            {
+                                Console.WriteLine("3 tentativas... Voce acabou de cancelar a remoção do carro.");
+                            }
+                        }
+
+                    } while (Tentativas != 0 || remover != 1);
+                }
+            }
+        }
+        static void RemoverCliente()
+        {
+            int remover = 0;
+            ConsultaCliente();
+            Console.Clear();
+            if (Achou == 1)
+            {
+                Console.WriteLine("Tem certeza que deseja remover este cliente?");
+                do
+                {
+                    Console.WriteLine("(S/N)");
+                    Resposta = Console.ReadLine();
+                    Resposta = Resposta.ToUpper();
+                    if (Resposta != "S" && Resposta != "N")
+                    {
+                        Console.WriteLine("Resposta incorreta, digite novamente! ");
+                    }
+                } while (Resposta != "S" && Resposta != "N");
+                if (Resposta == "S")
+                {
+                    Tentativas = 3;
+                    do
+                    {
+                        Console.WriteLine("Digite a senha de usuario para confirmar: ");
+                        SenhaTeste = Console.ReadLine();
+                        Tentativas -= 1;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (Usuarios[i] + "123" == SenhaTeste)
+                            {
+                                for (int j = Posicao; j < ClienteCadastrado; j++)
+                                {
+                                    Nome[i] = Nome[i + 1];
+                                    RG[i] = RG[i + 1];
+                                    CPF[i] = CPF[i + 1];
+                                    for (int e = 0; j < 7; j++)
+                                    {
+                                        Endereco[i, e] = Endereco[i + 1, e];
+                                    }
+                                }
+                                ClientesRemovidos += 1;
+                                remover = 1;
+                                break;
+                            }
+                        }
+                        if (remover == 0)
+                        {
+                            Console.WriteLine("Senha incorreta! Tente Novamente... (máximo 3 tentativas)");
+                            if (Tentativas == 3)
+                            {
+                                Console.WriteLine("3 tentativas... Voce acabou de cancelar a remoção do cliente.");
+                            }
+                        }
+
+                    } while (Tentativas != 0 || remover != 1);
+                }
+            }
+        }
+        static void AlterarCliente()
+        {
+            ConsultaCliente();
+            if (Achou == 1)
+            {
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("\t'1' - Nome.........: {0}", Nome[Posicao]);
+                    Console.WriteLine("\t'2' - RG...........: {0}", RG[Posicao]);
+                    Console.WriteLine("\t'3' - CPF..........: {0}", CPF[Posicao]);
+                    Console.WriteLine("\t'4' - Pais.........: {0}", Endereco[Posicao, 0]);
+                    Console.WriteLine("\t'5' - Estado.......: {0}", Endereco[Posicao, 1]);
+                    Console.WriteLine("\t'6' - Cidade.......: {0}", Endereco[Posicao, 2]);
+                    Console.WriteLine("\t'7' - Rua..........: {0}", Endereco[Posicao, 3]);
+                    Console.WriteLine("\t'8' - Bairro.......: {0}", Endereco[Posicao, 4]);
+                    Console.WriteLine("\t'9' - Numero.......: {0}", Endereco[Posicao, 5]);
+                    Console.WriteLine("\t'10' - Complemento..: {0}", Endereco[Posicao, 6]);
+                    Console.WriteLine("\t'11' - Saldo........: {0}", Saldo[Posicao]);
+                    Console.WriteLine("\t'12' - Sair.");
+                    Console.WriteLine("\nO que você deseja alterar?");
+                    Opcao = Console.ReadLine();
+                    switch (Opcao)
+                    {
+                        case "1": Nome[Posicao] = Console.ReadLine();
+                            break;
+                        case "2": RG[Posicao] = Console.ReadLine();
+                            break;
+                        case "3": CPF[Posicao] = Console.ReadLine();
+                            break;
+                        case "4": Endereco[Posicao, 0] = Console.ReadLine();
+                            break;
+                        case "5": Endereco[Posicao, 1] = Console.ReadLine();
+                            break;
+                        case "6": Endereco[Posicao, 2] = Console.ReadLine();
+                            break;
+                        case "7": Endereco[Posicao, 3] = Console.ReadLine();
+                            break;
+                        case "8": Endereco[Posicao, 4] = Console.ReadLine();
+                            break;
+                        case "9": Endereco[Posicao, 5] = Console.ReadLine();
+                            break;
+                        case "10": Endereco[Posicao, 6] = Console.ReadLine();
+                            break;
+                        case "11": Saldo[Posicao] = double.Parse(Console.ReadLine());
+                            break;
+                        default: Console.WriteLine("Opção incorreta! Digite novamente!");
+                            continue;
+                    }
+                } while (Opcao != "12");
+            }
+        }
+        static void AlterarCarro()
+        {
+            ConsultaCarros();
+            if (Achou == 1)
+            {
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("\t'1' - Marca............: {0}", Marca[Posicao]);
+                    Console.WriteLine("\t'2' - Placa............: {0}", Placa[Posicao]);
+                    Console.WriteLine("\t'3' - Cor..............: {0}", Cor[Posicao]);
+                    Console.WriteLine("\t'4' - Km Atual.........: {0}", Quilometragem[Posicao]);
+                    Console.WriteLine("\t'5' - Situação.........: {0}", Situacao[Posicao]);
+                    Console.WriteLine("\t'6' - Disponibilidade..: {0} dias", DiasLocado[Posicao]);
+                    Console.WriteLine("\t'7' - Valor Diária.....: {0}", ValorDiaria[Posicao]);
+                    Console.WriteLine("\t'8' - Sair.");
+                    Console.WriteLine("\nO que você deseja alterar?");
+                    Opcao = Console.ReadLine();
+                    switch (Opcao)
+                    {
+                        case "1": Marca[Posicao] = Console.ReadLine();
+                            break;
+                        case "2":
+                            do
+                            {
+                                Console.WriteLine("(XXX-000): ");
+                                Placa[Posicao] = Console.ReadLine();
+                                if (Placa[Posicao].Length != 6)
+                                {
+                                    Console.WriteLine("Placa invalida. Digite novamente com 6 digitos!");
+                                }
+                            } while (Placa[Posicao].Length != 6);
+                            break;
+                        case "3": Cor[Posicao] = Console.ReadLine();
+                            break;
+                        case "4": Quilometragem[Posicao] = double.Parse(Console.ReadLine());
+                            break;
+                        case "5": Console.WriteLine("(Garagem - Rodando - Reservado): ");
+                            Situacao[Posicao] = Console.ReadLine();
+                            break;
+                        case "6": DiasLocado[Posicao] = int.Parse(Console.ReadLine());
+                            break;
+                        case "7": ValorDiaria[Posicao] = double.Parse(Console.ReadLine());
+                            break;
+                        default: Console.WriteLine("Opção incorreta! Digite novamente!");
+                            continue;
+                    }
+                } while (Opcao != "8");
+            }
+        }       
 
 
 
