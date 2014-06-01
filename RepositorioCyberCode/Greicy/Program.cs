@@ -8,6 +8,7 @@ namespace Greicy
 {
     class Program
     {
+        //Variaveis Globais
         static int CarroCadastrado = 0;
         static int ClienteCadastrado = 0;
         static int constante = 20;
@@ -19,13 +20,15 @@ namespace Greicy
         static int Posicao = 0;
         static int Tentativas = 3;
         static int CarrosRemovidos, ClientesRemovidos = 0;
-        static double RendaMensal =0;
-        static double RendaCaixa =0;
-        static int PosicaoCliente=0;
-        static string[] Usuarios = {"aprigio","luis","mateus","greicy","thiago"};
+        static double RendaMensal = 0;
+        static double RendaCaixa = 0;
+        static int PosicaoCliente = 0;
+        static string[] Usuarios = { "aprigio", "luis", "mateus", "greicy", "thiago" };
         static int garagem = 0;
         static int rodando = 0;
         static int reservado = 0;
+
+        // Variaveis Relacionadas aos Carros
 
         static string[] Marca = new string[constante];
         static string[] Placa = new string[constante];
@@ -35,19 +38,382 @@ namespace Greicy
         static int[] DiasLocado = new int[constante];
         static double[] ValorDiaria = new double[constante];
 
+        // Variaveis Relacionadas aos Clientes
+
         static string[] Nome = new string[constante];
         static double[] Saldo = new double[constante];
-        static string [] Carro = new string[constante];
+        static string[] Carro = new string[constante];
         static string[] RG = new string[constante];
         static string[] CPF = new string[constante];
         static string[,] Endereco = new string[7, constante];
         //Endereço: Linha 1 = Pais; Linha 2= Estado; Linha 3 =Cidade; Linha 4= Rua; Linha 5 = Bairro; Linha 6 = Numero; Linha 7 = Complemento
-
+        
         static void Main(string[] args)
         {
+            //Chamando o método MENU
+            Menu();
 
+            Console.ReadKey();
+        }
+        
+        // Metodos dos Menus
+
+        static void Menu()
+        {
+            do
+            {
+
+                Opcao = null;
+                Console.Clear();
+                //Console.BackgroundColor = ConsoleColor.;
+                Console.WriteLine();
+                Console.WriteLine("░░░░░░░░░░░░░░░░░░░░ LOCACAO DE VEICULOS - CYBER CAR ░░░░░░░░░░░░░░░░░░░░░");
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                                  MENU                                  ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+                Console.WriteLine("║                             1 - CADASTRO                               ║");
+                Console.WriteLine("║                             2 - CONSULTA                               ║");
+                Console.WriteLine("║                             3 - MOVIMENTO                              ║");
+                Console.WriteLine("║                             4 - ALETRACAO                              ║");
+                Console.WriteLine("║                             5 - REMOCAO                                ║");
+                Console.WriteLine("║                             6 - RELATORIO                              ║");
+                Console.WriteLine("║                             7 - AJUDA                                  ║");
+                Console.WriteLine("║                             8 - SAIR                                   ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+                Opcao = Console.ReadLine();
+                switch (Opcao)
+                {
+                    case "1":
+                        MenuCadastro();
+                        break;
+                    case "2":
+                        MenuConsulta();
+                        break;
+                    case "3":
+                        MenuMovimento();
+                        break;
+                    case "4":
+                        MenuAlteracao();
+                        break;
+                    case "5":
+                        MenuRemocao();
+                        break;
+                    case "6":
+                        MenuRelatorio();
+                        break;
+                    case "7":
+                        MenuAjuda();
+                        break;
+                    case "8":
+                        Console.WriteLine("O programa está sendo encerrado.");
+                        Console.ReadKey();
+                        break;
+                    default:
+                        Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
+                        Console.ReadKey();
+                        continue;
+                }
+            } while (Opcao != "1" || Opcao != "2" || Opcao != "3" || Opcao != "4" || Opcao != "5" || Opcao != "6" || Opcao != "7" || Opcao != "8");
+        }
+        static void MenuCadastro()
+        {
+            do
+            {
+                Opcao = null;
+                Console.Clear();
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                              MENU CADASTRO                             ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+                Console.WriteLine("║                         1 - CADASTRO VEICULO                           ║");
+                Console.WriteLine("║                         2 - CADASTRO CLIENTE                           ║");
+                Console.WriteLine("║                         3 - Voltar                                     ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+                Opcao = Console.ReadLine();
+                switch (Opcao)
+                {
+                    case "1":
+                        //Chama o  metodo cadastro carro
+                        CadastroCarro();
+                        break;
+                    case "2":
+                        //Chamar metodo cadastro cliente
+                        CadastroCliente();
+                        break;
+                    case "3": 
+                        Menu();
+                        break;
+                    default: 
+                        Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
+                        Console.ReadKey();
+                        continue;
+                }
+            } while (Opcao != "1" || Opcao != "2" || Opcao != "3");
+        }
+        static void MenuConsulta()
+        {
+            do
+            {
+                Console.Clear();
+                Opcao = null;
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                              MENU CONSULTA                             ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+                Console.WriteLine("║                         1 - CONSULTAR VEICULO                          ║");
+                Console.WriteLine("║                         2 - CONSULTAR CLIENTE                          ║");
+                Console.WriteLine("║                         3 - SITUACAO DO VEICULO                        ║");
+                Console.WriteLine("║                         4 - Voltar                                     ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+
+                Opcao = Console.ReadLine();
+
+                switch (Opcao)
+                {
+
+                    case "1":
+                        //Chama o  metodo CONSULTA carro
+                        ConsultaCarros();
+                        break;
+                    case "2":
+                        //Chamar metodo CONSULTA cliente
+                        ConsultaCliente();
+                        break;
+                    case "3": Console.Clear();
+                        //Chama o metodo de situação dos carros
+                        SituacaoDosCarros();
+                        break;
+                    case "4":
+                        //Chama o menu novamente
+                        Menu();
+                        break;
+                    default: 
+                        Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
+                        Console.ReadKey();
+                        continue;
+                }
+            } while (Opcao != "1" || Opcao != "2" || Opcao != "3" || Opcao != "4");
+        }
+        static void MenuMovimento()
+        {
+            do
+            {
+
+                Opcao = null;
+                Console.Clear();
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                             MENU MOVIMENTO                             ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+                Console.WriteLine("║                              1 - RESERVA                               ║");
+                Console.WriteLine("║                              2 - LOCACAO                               ║");
+                Console.WriteLine("║                              3 - DEVOLUCAO                             ║");
+                Console.WriteLine("║                              4 - Voltar                                ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+                Opcao = Console.ReadLine();
+
+                switch (Opcao)
+                {
+
+                    case "1":
+                        //Chama o  metodo RESERVA carro
+                        Reserva();
+                        break;
+                    case "2":
+                        //Chamar metodo LOCACAO carro
+                        Locacao();
+                        break;
+                    case "3":
+                        //Chamar o metodo DEVOLUCAO carro
+                        Devolucao();
+                        break;
+                    case "4":
+                        Menu();
+                        break;
+                    default: 
+                        Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
+                        Console.ReadKey();
+                        continue;
+                }
+            } while (Opcao != "1" || Opcao != "2" || Opcao != "3" || Opcao != "4");
 
         }
+        static void MenuAlteracao()
+        {
+            do
+            {
+                Console.Clear();
+                Opcao = null;
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                             MENU ALTERACAO                             ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+                Console.WriteLine("║                          1 - ALTERAR VEICULO                           ║");
+                Console.WriteLine("║                          2 - ALTERAR CLIENTE                           ║");
+                Console.WriteLine("║                          3 - Voltar                                    ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+                Opcao = Console.ReadLine();
+                switch (Opcao)
+                {
+                    case "1":
+                        //Chama o  metodo ALTERACAO carro
+                        AlterarCarro();
+                        break;
+                    case "2":
+                        //Chamar metodo ALTERACAO cliente
+                        AlterarCliente();
+                        break;
+                    case "3":
+                        Menu();
+                        break;
+                    default: 
+                        Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
+                        Console.ReadKey();
+                        continue;
+                }
+            } while (Opcao != "1" || Opcao != "2" || Opcao != "3");
+        }
+        static void MenuRemocao()
+        {
+            do
+            {
+                Console.Clear();
+                Opcao = null;
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                              MENU REMOCAO                              ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+                Console.WriteLine("║                          1 - REMOCAO VEICULO                           ║");
+                Console.WriteLine("║                          2 - REMOCAO CLIENTE                           ║");
+                Console.WriteLine("║                          3 - Voltar                                    ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+
+                Opcao = Console.ReadLine();
+
+                switch (Opcao)
+                {
+
+                    case "1":
+                        //Chama o  metodo REMOCAO carro
+                        RemoverCarro();
+                        break;
+                    case "2":
+                        //Chamar metodo REMOCAO cliente
+                        RemoverCliente();
+                        break;
+                    case "3":
+                        Menu();
+                        break;
+                    default:
+                        Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
+                        Console.ReadKey();
+                        continue;
+                }
+            } while (Opcao != "1" || Opcao != "2" || Opcao != "3");
+        }
+        static void MenuAjuda()
+        {
+            Console.Clear();
+            Console.WriteLine("╔═════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                              MENU AJUDA                                     ║");
+            Console.WriteLine("╚═════════════════════════════════════════════════════════════════════════════╝\n");
+
+            Console.WriteLine("Passo a Passo para acesso ao Sistema\n");
+
+            Console.WriteLine("1. Login e Senha");
+
+            Console.WriteLine("Para acessar o Sistema insira o login e senha para identificação do funcionário.");
+
+            Console.WriteLine("2. Cadastro Cliente: Nome, CPF e Endereço.");
+
+            Console.WriteLine("Para Cadastro do cliente informe os dados pessoais é o endereço.\n");
+
+            Console.WriteLine("3. Cadastro Automóvel: MARCA, PLACA, KM inicial e KM final");
+
+            Console.WriteLine("Insira os dados do Automóvel para obter o valor do aluguel é se o automóvel se");
+            Console.WriteLine("encontra na garagem.\n");
+
+            Console.WriteLine("4. Consultas: Automóvel e Cliente");
+
+            Console.WriteLine("Dados de consulta Automóvel rodando, Automóvel na garagem.");
+
+            Console.WriteLine("Dados do Cliente");
+
+            Console.WriteLine("Tabela de Preços dos Automóveis\n");
+
+            Console.WriteLine("5. Movimento: Movimento Diário");
+
+            Console.WriteLine("Controle de Locação");
+
+            Console.WriteLine("Controle de Devolução");
+
+            Console.WriteLine("Reserva: No ato de locação, informar se o cliente está bloqueado, se o cliente");
+            Console.WriteLine("já locou ou está devendo, se o carro está reservado.\n");
+
+            Console.WriteLine("6. Alteração: Automóvel e Cliente ");
+            Console.WriteLine("Altera os dados do Automóvel");
+            Console.WriteLine("Altera os dados do Cliente\n");
+
+            Console.WriteLine("7. Remoção: Automóvel");
+            Console.WriteLine("Remove Automóvel fora de linha ou com defeito\n");
+
+            Console.WriteLine("8. Relatório: Cliente, Automóvel e Funcionario");
+            Console.WriteLine("Dados do Cliente");
+            Console.WriteLine("Dados do Automóvel");
+            Console.WriteLine("Dados da Locação");
+            Console.WriteLine("Dados do Funcionário Cadastrado");
+            Console.ReadKey();
+        }
+        static void MenuRelatorio()
+        {
+            do
+            {
+                Console.Clear();
+                Opcao = null;
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                             MENU RELATORIO                             ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+                Console.WriteLine("║                        1 - RELATORIO DO VEICULO                        ║");
+                Console.WriteLine("║                        2 - RELATORIO DO CLIENTE                        ║");
+                Console.WriteLine("║                        3 - RELATORIO DA RENSA MENSAL                   ║");
+                Console.WriteLine("║                        4 - RELATORIO DO CAIXA                          ║");
+                Console.WriteLine("║                        5 - Voltar                                      ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+                Opcao = Console.ReadLine();
+                switch (Opcao)
+                {
+
+                    case "1":
+                        //Chama o  metodo RELATORIO carro
+                        RelatorioCarro();
+                        break;
+                    case "2":
+                        //Chamar metodo RELATORIO cliente
+                        RelatorioCliente();
+                        break;
+                    case "3":
+                        //Chamar metodo RELATORIO reda mensal
+                        RelatorioMes();
+                        break;
+                    case "4":
+                        //Chamar metodo RELATORIO do caixa
+                        RelatorioCaixa();
+                        break;
+                    case "5":
+                        Menu();
+                        break;
+                    default:
+                        Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
+                        Console.ReadKey();
+                        continue;
+                }
+            } while (Opcao != "1" || Opcao != "2" || Opcao != "3" || Opcao != "4" || Opcao != "5");
+        }
+ 
+        // Metodos dos Itens
+
         static void Reserva()
         {
             do
@@ -135,19 +501,19 @@ namespace Greicy
                 Console.Write("\n\nDeseja tentar outra reserva ?     (S/N) ");
                 Opcao = Console.ReadLine();
                 Opcao = Opcao.ToLower();
-            }while (Opcao != "s");
-        } 
+            } while (Opcao != "s");
+        }
         static void Locacao()
-
         {
 
-            do{
-                int dia =0;
+            do
+            {
+                int dia = 0;
                 Opcao = null;
                 Posicao = 0;
                 ConsultaCliente();
                 Console.Clear();
-                if (Posicao != 0 )
+                if (Posicao != 0)
                 {
                     Console.WriteLine("Nome.........: {0}", Nome[Posicao]);
                     Console.WriteLine("RG...........: {0}", RG[Posicao]);
@@ -156,40 +522,47 @@ namespace Greicy
                     PosicaoCliente = Posicao;
                     if (Saldo[Posicao] > 0)
                     {
-                        do{
-                            Console.WriteLine("Cliente devendo um saldo de {0}, deseja efetuar o pagamento ?   (S/N) ",Saldo[Posicao]);
+                        do
+                        {
+                            Console.WriteLine("Cliente devendo um saldo de {0}, deseja efetuar o pagamento ?   (S/N) ", Saldo[Posicao]);
                             Opcao = Console.ReadLine();
                             Opcao = Opcao.ToLower();
                         } while (Opcao != "n" || Opcao != "s");
-                        if (Opcao == "s"){
-                            Saldo[Posicao]=0;
+                        if (Opcao == "s")
+                        {
+                            Saldo[Posicao] = 0;
                             RendaMensal += Saldo[Posicao];
                             RendaCaixa += Saldo[Posicao];
                             continue;
                         }
-                    }else{
-                        do{
+                    }
+                    else
+                    {
+                        do
+                        {
                             Console.WriteLine("Pesquisando carro ...");
                             Console.ReadKey();
                             ConsultaCarros();
                             Console.Clear();
-                            if(DiasLocado[Posicao] == 0 && Situacao[Posicao] == "Garagem")
+                            if (DiasLocado[Posicao] == 0 && Situacao[Posicao] == "Garagem")
                             {
                                 Console.WriteLine("\nMarca............: {0}", Marca[Posicao]);
                                 Console.WriteLine("Placa............: {0}", Placa[Posicao]);
                                 Console.WriteLine("Cor..............: {0}", Cor[Posicao]);
                                 Console.WriteLine("Km Atual.........: {0}", Quilometragem[Posicao]);
                                 Console.WriteLine("Valor Diária.....: {0}", ValorDiaria[Posicao]);
-                                do{
+                                do
+                                {
                                     Console.WriteLine("\nDeseja locar o automovel por quantos dias ?");
                                     dia = int.Parse(Console.ReadLine());
-                                    if (dia<1 || dia> 365){
+                                    if (dia < 1 || dia > 365)
+                                    {
                                         Console.WriteLine("Quantidade incorreta, insira novamente.");
                                         Console.ReadKey();
                                         continue;
                                     }
-                                }while(dia<1 || dia> 365);
-                                
+                                } while (dia < 1 || dia > 365);
+
                                 Saldo[PosicaoCliente] = dia * ValorDiaria[Posicao];
                                 Situacao[Posicao] = "Rodando";
                                 DiasLocado[Posicao] = dia;
@@ -197,60 +570,70 @@ namespace Greicy
                                 rodando += 1;
                                 garagem -= 1;
                             }
-                            else{
-                                    Console.WriteLine("Carro indisponível. {0}",Situacao[Posicao]);
-                                    Console.Write("\n\nDeseja tentar outra locação ?     (S/N) ");
-                                    Opcao = Console.ReadLine();
-                                    Opcao = Opcao.ToLower();
+                            else
+                            {
+                                Console.WriteLine("Carro indisponível. {0}", Situacao[Posicao]);
+                                Console.Write("\n\nDeseja tentar outra locação ?     (S/N) ");
+                                Opcao = Console.ReadLine();
+                                Opcao = Opcao.ToLower();
                             }
-                        }while (Opcao != "n");
+                        } while (Opcao != "n");
                     }
                 }
-            }while(Opcao != "n");
-        } 
+            } while (Opcao != "n");
+        }
         static void Devolucao()
         {
-            do{
-                double km =0;
-                int dia =0;
+            do
+            {
+                double km = 0;
+                int dia = 0;
                 Opcao = null;
                 Posicao = 0;
                 ConsultaCliente();
                 Console.Clear();
-                if (Posicao != 0 )
+                if (Posicao != 0)
                 {
                     Console.WriteLine("Nome............: {0}", Nome[Posicao]);
                     Console.WriteLine("RG..............: {0}", RG[Posicao]);
                     Console.WriteLine("CPF.............: {0}", CPF[Posicao]);
                     Console.WriteLine("Saldo...........: {0}", Saldo[Posicao]);
-                    Console.WriteLine("Placa do carro...:{0}",Carro[Posicao]);
+                    Console.WriteLine("Placa do carro...:{0}", Carro[Posicao]);
                     PosicaoCliente = Posicao;
-                    for(int i=0; i< CarroCadastrado;i++){
-                        if (Carro[PosicaoCliente] == Placa[i]){
+                    for (int i = 0; i < CarroCadastrado; i++)
+                    {
+                        if (Carro[PosicaoCliente] == Placa[i])
+                        {
                             Console.WriteLine("Marca....................: {0}", Marca[i]);
                             Console.WriteLine("Placa....................: {0}", Placa[i]);
                             Console.WriteLine("Cor......................: {0}", Cor[i]);
-                            Console.WriteLine("Quilometragem Inicial....: {0}",Quilometragem[i]);
+                            Console.WriteLine("Quilometragem Inicial....: {0}", Quilometragem[i]);
                         }
-                    }                    
-                    do{
+                    }
+                    do
+                    {
                         Console.WriteLine("Quilometragem da volta : ");
                         km = double.Parse(Console.ReadLine());
-                        if(km < Quilometragem[Posicao]){
+                        if (km < Quilometragem[Posicao])
+                        {
                             Console.WriteLine("Quilometragem errada, insira a correta.");
                             Console.ReadKey();
                             continue;
-                        }else{
+                        }
+                        else
+                        {
                             Quilometragem[Posicao] = km;
                         }
-                    }while(km < Quilometragem[Posicao]);
-                    do{
-                            Console.WriteLine("Cliente devendo um saldo de {0}, deseja efetuar o pagamento ?   (S/N) ",Saldo[PosicaoCliente]);
-                            Opcao = Console.ReadLine();
-                            Opcao = Opcao.ToLower();
+                    } while (km < Quilometragem[Posicao]);
+                    do
+                    {
+                        Console.WriteLine("Cliente devendo um saldo de {0}, deseja efetuar o pagamento ?   (S/N) ", Saldo[PosicaoCliente]);
+                        Opcao = Console.ReadLine();
+                        Opcao = Opcao.ToLower();
                     } while (Opcao != "n" || Opcao != "s");
-                    if (Opcao == "s"){
-                        Saldo[PosicaoCliente]=0;
+                    if (Opcao == "s")
+                    {
+                        Saldo[PosicaoCliente] = 0;
                         RendaMensal += Saldo[Posicao];
                         RendaCaixa += Saldo[Posicao];
                         garagem += 1;
@@ -264,7 +647,7 @@ namespace Greicy
                         continue;
                     }
                 }
-            }while(Opcao == "s");
+            } while (Opcao == "s");
         }
         static void CadastroCarro()
         {
@@ -459,7 +842,7 @@ namespace Greicy
             {
                 Opcao = null;
                 Console.Clear();
-                for (int i = 0; i < CarroCadastrado - CarrosRemovidos ; i++)
+                for (int i = 0; i < CarroCadastrado - CarrosRemovidos; i++)
                 {
                     Console.WriteLine(" ");
                     Console.WriteLine("Marca............: {0}", Marca[i]);
@@ -525,10 +908,10 @@ namespace Greicy
         {
             Console.Clear();
             Console.WriteLine("\t\t\t RELATORIO DO CAIXA  \n   ");
-            Console.WriteLine("\nTemos {0} carros na garagem.",garagem);
-            Console.WriteLine("Temos {0} carros rodando.",rodando);
-            Console.WriteLine("Temos {0} carros reservados.",reservado);
-            Console.WriteLine("Dinheiro em caixa : {0} R$",RendaCaixa);
+            Console.WriteLine("\nTemos {0} carros na garagem.", garagem);
+            Console.WriteLine("Temos {0} carros rodando.", rodando);
+            Console.WriteLine("Temos {0} carros reservados.", reservado);
+            Console.WriteLine("Dinheiro em caixa : {0} R$", RendaCaixa);
             Console.ReadKey();
         }
         static void RelatorioMes()
@@ -770,8 +1153,5 @@ namespace Greicy
                 } while (Opcao != "8");
             }
         }       
-
-
-
     }
 }
