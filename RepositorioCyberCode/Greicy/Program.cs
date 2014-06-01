@@ -52,6 +52,7 @@ namespace Greicy
         {
             //Chamando o método MENU
             Menu();
+           
 
             Console.ReadKey();
         }
@@ -108,7 +109,7 @@ namespace Greicy
                     case "8":
                         Console.WriteLine("O programa está sendo encerrado.");
                         Console.ReadKey();
-                        break;
+                        break;     
                     default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
@@ -690,12 +691,12 @@ namespace Greicy
                 Nome[ClienteCadastrado - ClientesRemovidos] = Console.ReadLine();
                 do
                 {
-                    Console.Write("RG : (10 digitos)");
+                    Console.Write("RG   (10 digitos) : ");
                     RG[ClienteCadastrado - ClientesRemovidos] = Console.ReadLine();
                 } while (RG[ClienteCadastrado - ClientesRemovidos].Length != 10);
                 do
                 {
-                    Console.Write("CPF : (11 digitos)");
+                    Console.Write("CPF  (11 digitos) : ");
                     CPF[ClienteCadastrado - ClientesRemovidos] = Console.ReadLine();
                 } while (CPF[ClienteCadastrado - ClientesRemovidos].Length != 11);
                 Console.Write("Pais : ");
@@ -733,12 +734,13 @@ namespace Greicy
                     Console.WriteLine("\t\t\t CONSULTA DE CLIENTE :\n\n");
                     Console.Write("Digite o CPF do cliente : ");
                     Pesquisa = Console.ReadLine();
-                    if (Pesquisa.Length != CPF.Length)
+                    if (Pesquisa.Length != 11)
                     {
                         Console.WriteLine("CPF invalido, digite no formato correto do CPF (11 digitos).");
+                        Console.ReadKey();
                         continue;
                     }
-                } while (Pesquisa.Length != CPF.Length);
+                } while (Pesquisa.Length != 11);
                 for (int i = 0; i < constante; i++)
                 {
                     if (Pesquisa == CPF[i])
@@ -1140,8 +1142,11 @@ namespace Greicy
                             break;
                         case "4": Quilometragem[Posicao] = double.Parse(Console.ReadLine());
                             break;
-                        case "5": Console.WriteLine("(Garagem - Rodando - Reservado): ");
-                            Situacao[Posicao] = Console.ReadLine();
+                        case "5":
+                            do
+                            {   Console.WriteLine("(Garagem - Rodando - Reservado): ");
+                                Situacao[Posicao] = Console.ReadLine();
+                            } while (Situacao[Posicao] != "Garagem" || Situacao[Posicao] != "Rodando" || Situacao[Posicao] != "Reservado");
                             break;
                         case "6": DiasLocado[Posicao] = int.Parse(Console.ReadLine());
                             break;
