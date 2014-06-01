@@ -51,9 +51,7 @@ namespace Greicy
         static void Main(string[] args)
         {
             //Chamando o método MENU
-            Menu();
-           
-
+            Menu();           
             Console.ReadKey();
         }
         
@@ -107,15 +105,14 @@ namespace Greicy
                         MenuAjuda();
                         break;
                     case "8":
-                        Console.WriteLine("O programa está sendo encerrado.");
-                        Console.ReadKey();
-                        break;     
+                        Console.WriteLine("O programa está sendo encerrado. Aperte qualquer tecla para continuar!");                        
+                        break;
                     default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
                 }
-            } while (Opcao != "1" || Opcao != "2" || Opcao != "3" || Opcao != "4" || Opcao != "5" || Opcao != "6" || Opcao != "7" || Opcao != "8");
+            } while (Opcao != "8");
         }
         static void MenuCadastro()
         {
@@ -141,16 +138,15 @@ namespace Greicy
                     case "2":
                         //Chamar metodo cadastro cliente
                         CadastroCliente();
-                        break;
-                    case "3": 
-                        Menu();
+                        break;                  
+                    case "3":
                         break;
                     default: 
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
                 }
-            } while (Opcao != "1" || Opcao != "2" || Opcao != "3");
+            } while (Opcao != "3");
         }
         static void MenuConsulta()
         {
@@ -185,16 +181,15 @@ namespace Greicy
                         //Chama o metodo de situação dos carros
                         SituacaoDosCarros();
                         break;
-                    case "4":
+                    case "4":  
                         //Chama o menu novamente
-                        Menu();
                         break;
                     default: 
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
                 }
-            } while (Opcao != "1" || Opcao != "2" || Opcao != "3" || Opcao != "4");
+            } while (Opcao != "4");
         }
         static void MenuMovimento()
         {
@@ -230,15 +225,13 @@ namespace Greicy
                         Devolucao();
                         break;
                     case "4":
-                        Menu();
                         break;
                     default: 
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
                 }
-            } while (Opcao != "1" || Opcao != "2" || Opcao != "3" || Opcao != "4");
-
+            } while (Opcao != "4");
         }
         static void MenuAlteracao()
         {
@@ -265,15 +258,14 @@ namespace Greicy
                         //Chamar metodo ALTERACAO cliente
                         AlterarCliente();
                         break;
-                    case "3":
-                        Menu();
+                    case "3":                        
                         break;
                     default: 
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
                 }
-            } while (Opcao != "1" || Opcao != "2" || Opcao != "3");
+            } while (Opcao != "3");
         }
         static void MenuRemocao()
         {
@@ -303,15 +295,14 @@ namespace Greicy
                         //Chamar metodo REMOCAO cliente
                         RemoverCliente();
                         break;
-                    case "3":
-                        Menu();
+                    case "3":                     
                         break;
                     default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
                 }
-            } while (Opcao != "1" || Opcao != "2" || Opcao != "3");
+            } while (Opcao != "3");
         }
         static void MenuAjuda()
         {
@@ -402,15 +393,14 @@ namespace Greicy
                         //Chamar metodo RELATORIO do caixa
                         RelatorioCaixa();
                         break;
-                    case "5":
-                        Menu();
+                    case "5":                     
                         break;
                     default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
                 }
-            } while (Opcao != "1" || Opcao != "2" || Opcao != "3" || Opcao != "4" || Opcao != "5");
+            } while (Opcao != "5");            
         }
  
         // Metodos dos Itens
