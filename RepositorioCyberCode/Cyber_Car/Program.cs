@@ -17,6 +17,7 @@ namespace Cyber_Car
         static int Achou = 0;
         static string Resposta = null;
         static string SenhaTeste = null;
+        static string UsuarioTeste = null;
         static int Posicao = 0;
         static int Tentativas = 3;
         static int CarrosRemovidos, ClientesRemovidos = 0;
@@ -52,14 +53,15 @@ namespace Cyber_Car
         {
 
             Login();
-            //Chamando o método MENU
-           // Menu();
+            //Chamando o método MENU           
             Console.ReadKey();
         }
 
 
         static void Login()
         {
+            Achou = 0;
+            Tentativas = 0;
             Console.WriteLine();
             Console.WriteLine("░░░░░░░░░░░░░░░░░░░░ LOCACAO DE VEICULOS - CYBER CAR ░░░░░░░░░░░░░░░░░░░░░");
             Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
@@ -67,12 +69,39 @@ namespace Cyber_Car
             Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
             Console.WriteLine("║                     INFORME SUA SENHA E SEU LOGIN                      ║");
             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
-            Console.WriteLine("LOGIN");
-            Console.WriteLine("SENHA");                                                                  
-            
-
-
-
+            do{                
+                Console.Write("LOGIN: ");
+                UsuarioTeste = Console.ReadLine();
+                Console.Write("SENHA: ");
+                SenhaTeste = Console.ReadLine();
+                Tentativas +=1;
+                for(int i = 0; i <5; i++)
+                {
+                    if (UsuarioTeste == Usuarios[i]){
+                        if (SenhaTeste == Usuarios[i] + "123")
+                        {
+                            Console.WriteLine("Login realizado com sucesso!");
+                            Achou += 1;
+                            Console.ReadKey();
+                            Menu();
+                            break;
+                        }                
+                    }          
+                }            
+                if (Achou == 0 && Tentativas < 3)
+                {
+                    Console.WriteLine("Senha incorreta! Tente Novamente... (máximo 3 tentativas)\n\n");
+                }                
+                if (Achou == 1)
+                {
+                    break;
+                }
+                if(Tentativas == 3 && Achou == 0){
+                    Console.WriteLine("Você errou 3 vezes o login ou a senha... O programa esta sendo encerrado!");
+                    Console.ReadKey();
+                    break;
+                }
+            }while(Tentativas != 3);
         }
 
 
