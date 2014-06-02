@@ -648,7 +648,9 @@ namespace Cyber_Car
             {
                 Opcao = null;
                 Console.Clear();
-                Console.WriteLine("\t\tCadastrando um novo Carro \n\n");
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░ CADASTRO - VEICULO ░░░░░░░░░░░░░░░░░░░░░░░░░░║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
                 Console.Write("Marca: ");
                 Marca[CarroCadastrado - CarrosRemovidos] = Console.ReadLine();
                 do
@@ -678,7 +680,9 @@ namespace Cyber_Car
             {
                 Console.Clear();
                 Opcao = null;
-                Console.WriteLine("\t\t\t CADASTRO CLIENTE :\n\n");
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░ CADASTRO - CLIENTE ░░░░░░░░░░░░░░░░░░░░░░░░░░║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
                 Console.Write("Nome : ");
                 Nome[ClienteCadastrado - ClientesRemovidos] = Console.ReadLine();
                 do
@@ -721,7 +725,9 @@ namespace Cyber_Car
                 Achou = 0;
                 Opcao = null;
                 Console.Clear();
-                Console.WriteLine("\t\t\t CONSULTA DE CLIENTE :\n\n");
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░ CONSULTA - CLIENTE ░░░░░░░░░░░░░░░░░░░░░░░░░░║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
                 Console.Write("Digite o CPF do cliente : ");
                 Pesquisa = Console.ReadLine();
                 if (Pesquisa.Length != 11)
@@ -768,7 +774,9 @@ namespace Cyber_Car
                 Achou = 0;
                 Opcao = null;
                 Console.Clear();
-                Console.WriteLine("\t\t\t CONSULTA DE CARRO :\n\n");
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░ CONSULTA - VEICULO ░░░░░░░░░░░░░░░░░░░░░░░░░░║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
                 Console.Write("Digite a placa do carro : ");
                 Pesquisa = Console.ReadLine();
                 if (Pesquisa.Length != 6)
@@ -809,7 +817,9 @@ namespace Cyber_Car
             {
                 Opcao = null;
                 Console.Clear();
-                Console.WriteLine("\t\t\t TABELA DE PREÇOS \n\n");
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░  TABELA DE PRECOS  ░░░░░░░░░░░░░░░░░░░░░░░░░░║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
                 for (int i = 0; i < CarroCadastrado - CarrosRemovidos; i++)
                 {
                     Console.WriteLine(" ");
@@ -826,7 +836,9 @@ namespace Cyber_Car
         }
         static void SituacaoDosCarros()
         {
-            Console.WriteLine("\t\t\t SITUAÇÃO DOS CARROS \n\n");
+            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░ SITUACAO - VEICULO ░░░░░░░░░░░░░░░░░░░░░░░░░░║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
             do
             {
                 Opcao = null;
@@ -846,7 +858,9 @@ namespace Cyber_Car
         }
         static void RelatorioCliente()
         {
-            Console.WriteLine("\t\t\t RELATORIO SOBRE CLIENTES :\n\n");
+            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░ RELATORIO - CLIENTE  ░░░░░░░░░░░░░░░░░░░░░░░░░║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
             do
             {
                 Opcao = null;
@@ -854,7 +868,7 @@ namespace Cyber_Car
                 for (int i = 0; i < ClienteCadastrado; i++)
                 {
                     Console.WriteLine(" ");
-                    Console.WriteLine("\nNome.........: {0}", Nome[i]);
+                    Console.WriteLine("\n\nNome.........: {0}", Nome[i]);
                     Console.WriteLine("RG...........: {0}", RG[i]);
                     Console.WriteLine("CPF..........: {0}", CPF[i]);
                     Console.WriteLine("Pais.........: {0}", Endereco[i, 0]);
@@ -873,7 +887,9 @@ namespace Cyber_Car
         }
         static void RelatorioCarro()
         {
-            Console.WriteLine("\t\t\t RELATORIO SOBRE CARROS :\n\n");
+            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░  RELATORIO - VEICULO  ░░░░░░░░░░░░░░░░░░░░░░░░║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
             do
             {
                 Opcao = null;
@@ -897,8 +913,10 @@ namespace Cyber_Car
         static void RelatorioCaixa()
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t RELATORIO DO CAIXA  \n   ");
-            Console.WriteLine("\nTemos {0} carros na garagem.", garagem);
+            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░  RELATORIO - CAIXA  ░░░░░░░░░░░░░░░░░░░░░░░░░║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+            Console.WriteLine("\n\nTemos {0} carros na garagem.", garagem);
             Console.WriteLine("Temos {0} carros rodando.", rodando);
             Console.WriteLine("Temos {0} carros reservados.", reservado);
             Console.WriteLine("Dinheiro em caixa : {0} R$", RendaCaixa);
@@ -908,7 +926,9 @@ namespace Cyber_Car
         {
             double dinheiroFaltando = 0;
             Console.Clear();
-            Console.WriteLine("\t\t\t RELATORIO MENSAL  \n   ");
+            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░   RELATORIO - MENSAL   ░░░░░░░░░░░░░░░░░░░░░░░║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
             Console.WriteLine("\nClientes : {0}", ClienteCadastrado - ClientesRemovidos);
             Console.WriteLine("Carros : {0}", CarroCadastrado - CarrosRemovidos);
             Console.WriteLine("Temos {0} carros na garagem.", garagem);
