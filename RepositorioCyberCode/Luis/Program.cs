@@ -360,7 +360,7 @@ namespace Luis
                 Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
                 Console.WriteLine("║                        1 - RELATORIO DO VEICULO                        ║");
                 Console.WriteLine("║                        2 - RELATORIO DO CLIENTE                        ║");
-                Console.WriteLine("║                        3 - RELATORIO DA RENSA MENSAL                   ║");
+                Console.WriteLine("║                        3 - RELATORIO DA RENDA MENSAL                   ║");
                 Console.WriteLine("║                        4 - RELATORIO DO CAIXA                          ║");
                 Console.WriteLine("║                        5 - Voltar                                      ║");
                 Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
