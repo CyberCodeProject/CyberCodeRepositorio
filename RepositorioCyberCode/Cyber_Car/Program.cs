@@ -32,6 +32,7 @@ namespace Cyber_Car
         // Variaveis Relacionadas aos Carros
 
         static string[] Marca = new string[constante];
+        static string[] Modelo = new string[constante];
         static string[] Placa = new string[constante];
         static string[] Cor = new string[constante];
         static double[] Quilometragem = new double[constante];
@@ -489,6 +490,7 @@ namespace Cyber_Car
                         ConsultaCarros();
                         Console.Clear();
                         Console.WriteLine("\nMarca............: {0}", Marca[Posicao]);
+                        Console.WriteLine("Modelo...........: {0}", Modelo[Posicao]);
                         Console.WriteLine("Placa............: {0}", Placa[Posicao]);
                         Console.WriteLine("Cor..............: {0}", Cor[Posicao]);
                         Console.WriteLine("Km Atual.........: {0}", Quilometragem[Posicao]);
@@ -574,6 +576,7 @@ namespace Cyber_Car
                         if (DiasLocado[Posicao] == 0 && Situacao[Posicao] == "Garagem")
                         {
                             Console.WriteLine("\nMarca............: {0}", Marca[Posicao]);
+                            Console.WriteLine("Modelo...........: {0}", Modelo[Posicao]);
                             Console.WriteLine("Placa............: {0}", Placa[Posicao]);
                             Console.WriteLine("Cor..............: {0}", Cor[Posicao]);
                             Console.WriteLine("Km Atual.........: {0}", Quilometragem[Posicao]);
@@ -628,6 +631,7 @@ namespace Cyber_Car
                     if (Carro[PosicaoCliente] == Placa[i])
                     {
                         Console.WriteLine("Marca....................: {0}", Marca[i]);
+                        Console.WriteLine("Modelo...................: {0}", Modelo[Posicao]);
                         Console.WriteLine("Placa....................: {0}", Placa[i]);
                         Console.WriteLine("Cor......................: {0}", Cor[i]);
                         Console.WriteLine("Quilometragem Inicial....: {0}", Quilometragem[i]);
@@ -682,6 +686,8 @@ namespace Cyber_Car
                 Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
                 Console.Write("Marca: ");
                 Marca[CarroCadastrado - CarrosRemovidos] = Console.ReadLine();
+                Console.WriteLine("Modelo : ");
+                Modelo[CarroCadastrado - CarrosRemovidos] = Console.ReadLine();
                 do
                 {
                     Console.Write("Placa: \t(XXX000)");
@@ -819,6 +825,7 @@ namespace Cyber_Car
                     {
                         Console.WriteLine(" ");
                         Console.WriteLine("\tMarca............: {0}", Marca[i]);
+                        Console.WriteLine("\tModelo...........: {0}", Modelo[i]);
                         Console.WriteLine("\tPlaca............: {0}", Placa[i]);
                         Console.WriteLine("\tCor..............: {0}", Cor[i]);
                         Console.WriteLine("\tKm Atual.........: {0}", Quilometragem[i]);
@@ -853,6 +860,7 @@ namespace Cyber_Car
                 {
                     Console.WriteLine(" ");
                     Console.WriteLine("Marca............: {0}", Marca[i]);
+                    Console.WriteLine("Modelo...........: {0}", Modelo[i]);
                     Console.WriteLine("Placa............: {0}", Placa[i]);
                     Console.WriteLine("Cor..............: {0}", Cor[i]);
                     Console.WriteLine("Valor Diária.....: {0} R$", ValorDiaria[i]);
@@ -876,8 +884,9 @@ namespace Cyber_Car
                 {
                     Console.WriteLine(" ");
                     Console.WriteLine("Marca............: {0}", Marca[i]);
+                    Console.WriteLine("Modelo...........: {0}", Modelo[i]);
                     Console.WriteLine("Local............: {0}", Situacao[i]);
-                    Console.WriteLine("Disponivel em....: {0} dias", DiasLocado[i] + 1);
+                    Console.WriteLine("Disponivel em....: {0} dias", DiasLocado[i]);
                 }
                 Console.WriteLine("\n\nDeseja sair ?      (S/N)");
                 Opcao = Console.ReadLine();
@@ -927,6 +936,7 @@ namespace Cyber_Car
                 {
                     Console.WriteLine(" ");
                     Console.WriteLine("Marca............: {0}", Marca[i]);
+                    Console.WriteLine("Modelo...........: {0}", Modelo[i]);
                     Console.WriteLine("Placa............: {0}", Placa[i]);
                     Console.WriteLine("Cor..............: {0}", Cor[i]);
                     Console.WriteLine("Km Atual.........: {0}", Quilometragem[i]);
@@ -1174,13 +1184,14 @@ namespace Cyber_Car
                 {
                     Console.Clear();
                     Console.WriteLine("\t'1' - Marca............: {0}", Marca[Posicao]);
-                    Console.WriteLine("\t'2' - Placa............: {0}", Placa[Posicao]);
-                    Console.WriteLine("\t'3' - Cor..............: {0}", Cor[Posicao]);
-                    Console.WriteLine("\t'4' - Km Atual.........: {0}", Quilometragem[Posicao]);
-                    Console.WriteLine("\t'5' - Situação.........: {0}", Situacao[Posicao]);
-                    Console.WriteLine("\t'6' - Disponibilidade..: {0} dias", DiasLocado[Posicao]);
-                    Console.WriteLine("\t'7' - Valor Diária.....: {0}", ValorDiaria[Posicao]);
-                    Console.WriteLine("\t'8' - Sair.");
+                    Console.WriteLine("\t'2' - Modelo...........: {0}", Modelo[Posicao]);
+                    Console.WriteLine("\t'3' - Placa............: {0}", Placa[Posicao]);
+                    Console.WriteLine("\t'4' - Cor..............: {0}", Cor[Posicao]);
+                    Console.WriteLine("\t'5' - Km Atual.........: {0}", Quilometragem[Posicao]);
+                    Console.WriteLine("\t'6' - Situação.........: {0}", Situacao[Posicao]);
+                    Console.WriteLine("\t'7' - Disponibilidade..: {0} dias", DiasLocado[Posicao]);
+                    Console.WriteLine("\t'8' - Valor Diária.....: {0}", ValorDiaria[Posicao]);
+                    Console.WriteLine("\t'9' - Sair.");
                     Console.WriteLine("\nO que você deseja alterar?");
                     Opcao = Console.ReadLine();
                     switch (Opcao)
@@ -1190,7 +1201,11 @@ namespace Cyber_Car
                             Marca[Posicao] = Console.ReadLine();
                             break;
                         case "2":
-                            do
+                            Console.Write("Novo: ");
+                            Modelo[Posicao] = Console.ReadLine();
+                            break;
+                        case "3":
+                             do
                             {
                                 Console.Write("Novo: ");
                                 Console.WriteLine("(XXX-000): ");
@@ -1201,33 +1216,33 @@ namespace Cyber_Car
                                 }
                             } while (Placa[Posicao].Length != 6);
                             break;
-                        case "3":
+                        case "4":
                             Console.Write("Novo: ");
                             Cor[Posicao] = Console.ReadLine();
                             break;
-                        case "4":
+                        case "5":
                             Console.Write("Novo: ");
                             Quilometragem[Posicao] = double.Parse(Console.ReadLine());
                             break;
-                        case "5":
+                        case "6":
                             do
                             {
                                 Console.WriteLine("(Garagem - Rodando - Reservado): ");
                                 Situacao[Posicao] = Console.ReadLine();
                             } while (Situacao[Posicao] != "Garagem" || Situacao[Posicao] != "Rodando" || Situacao[Posicao] != "Reservado");
                             break;
-                        case "6":
+                        case "7":
                             Console.Write("Novo: ");
                             DiasLocado[Posicao] = int.Parse(Console.ReadLine());
                             break;
-                        case "7":
+                        case "8":
                             Console.Write("Novo: ");
                             ValorDiaria[Posicao] = double.Parse(Console.ReadLine());
                             break;
                         default: Console.WriteLine("Opção incorreta! Digite novamente!");
                             continue;
                     }
-                } while (Opcao != "8");
+                } while (Opcao != "9");
             }
         }
     }
