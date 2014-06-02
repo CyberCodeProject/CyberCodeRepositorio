@@ -50,10 +50,31 @@ namespace Cyber_Car
 
         static void Main(string[] args)
         {
+
+            Login();
             //Chamando o método MENU
-            Menu();
+           // Menu();
             Console.ReadKey();
         }
+
+
+        static void Login()
+        {
+            Console.WriteLine();
+            Console.WriteLine("░░░░░░░░░░░░░░░░░░░░ LOCACAO DE VEICULOS - CYBER CAR ░░░░░░░░░░░░░░░░░░░░░");
+            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                                  LOGIN                                 ║");
+            Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+            Console.WriteLine("║                     INFORME SUA SENHA E SEU LOGIN                      ║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+            Console.WriteLine("LOGIN");
+            Console.WriteLine("SENHA");                                                                  
+            
+
+
+
+        }
+
 
         // Metodos dos Menus
 
