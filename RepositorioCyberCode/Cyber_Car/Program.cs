@@ -362,40 +362,39 @@ namespace Cyber_Car
             Console.WriteLine("╚═══════════════════════════════════════════════════════════════════════════╝");
             Console.WriteLine("╔═══════════════════════════════════════════════════════════════════════════╗");
             Console.WriteLine("║                    Passo a Passo para acesso ao Sistema                   ║");
-            Console.WriteLine("║1. Login e Senha                                                           ║");
-            Console.WriteLine("║Para acessar o Sistema insira o login e senha para identificação .         ║");
-            Console.WriteLine("║do funcionário                                                             ║");
             Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
-            Console.WriteLine("║2. Cadastro Cliente: Nome, CPF e Endereço.                                 ║");
+            Console.WriteLine("║1. Cadastro Cliente: Nome, CPF e Endereço.                                 ║");
             Console.WriteLine("║Para Cadastro do cliente informe os dados pessoais é o endereço.           ║");
             Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
-            Console.WriteLine("║3. Cadastro Automóvel: MARCA, PLACA, KM inicial e KM final                 ║");
+            Console.WriteLine("║2. Cadastro Automóvel: MARCA, PLACA, KM inicial e KM final                 ║");
             Console.WriteLine("║Insira os dados do Automóvel para obter o valor do aluguel e               ║");
             Console.WriteLine("║se o automóvel se encontra na garagem.                                     ║");
             Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
-            Console.WriteLine("║4. Consultas: Automóvel e Cliente                                          ║");
+            Console.WriteLine("║3. Consultas: Automóvel e Cliente                                          ║");
             Console.WriteLine("║Dados de consulta Automóvel rodando, Automóvel na garagem.                 ║");
             Console.WriteLine("║Dados do Cliente                                                           ║");
             Console.WriteLine("║Tabela de Preços dos Automóveis                                            ║");
             Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
-            Console.WriteLine("║5. Movimento: Movimento Diário                                             ║");
+            Console.WriteLine("║4. Movimento: Movimento Diário                                             ║");
             Console.WriteLine("║Controle de Locação                                                        ║");
             Console.WriteLine("║Controle de Devolução                                                      ║");
             Console.WriteLine("║Reserva: No ato de locação, informar se o cliente está bloqueado,          ║");
             Console.WriteLine("║se o cliente já locou ou está devendo, se o carro está reservado.          ║");
             Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
-            Console.WriteLine("║6. Alteração: Automóvel e Cliente                                          ║");
+            Console.WriteLine("║5. Alteração: Automóvel e Cliente                                          ║");
             Console.WriteLine("║Altera os dados do Automóvel                                               ║");
             Console.WriteLine("║Altera os dados do Cliente                                                 ║");
             Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
-            Console.WriteLine("║7. Remoção: Automóvel                                                      ║");
+            Console.WriteLine("║6. Remoção: Automóvel                                                      ║");
             Console.WriteLine("║Remove Automóvel fora de linha ou com defeito                              ║");
             Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
-            Console.WriteLine("║8. Relatório: Cliente, Automóvel e Funcionario                             ║");
+            Console.WriteLine("║7. Relatório: Cliente, Automóvel e Funcionario                             ║");
             Console.WriteLine("║Dados do Cliente                                                           ║");
             Console.WriteLine("║Dados do Automóvel                                                         ║");
             Console.WriteLine("║Dados da Locação                                                           ║");
             Console.WriteLine("║Dados do Funcionário Cadastrado                                            ║");
+            Console.WriteLine("║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
+            Console.WriteLine("║8. Sair: Encerramento do programa.                                         ║");
             Console.WriteLine("╚═══════════════════════════════════════════════════════════════════════════╝");
             Console.ReadKey();
         }
@@ -412,7 +411,8 @@ namespace Cyber_Car
                 Console.WriteLine("║                        2 - RELATORIO DO CLIENTE                        ║");
                 Console.WriteLine("║                        3 - RELATORIO DA RENDA MENSAL                   ║");
                 Console.WriteLine("║                        4 - RELATORIO DO CAIXA                          ║");
-                Console.WriteLine("║                        5 - VOLTAR                                      ║");
+                Console.WriteLine("║                        5 - TABELA DE PREÇO                             ║");
+                Console.WriteLine("║                        6 - VOLTAR                                      ║");
                 Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
 
                 Opcao = Console.ReadLine();
@@ -436,13 +436,16 @@ namespace Cyber_Car
                         RelatorioCaixa();
                         break;
                     case "5":
+                        TabelaPrecoCarros();
+                        break;
+                    case "6":
                         break;
                     default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
                 }
-            } while (Opcao != "5");
+            } while (Opcao != "6");
         }
 
         // Metodos dos Itens
@@ -719,7 +722,7 @@ namespace Cyber_Car
                 Console.Write("Nome : ");
                 Nome[ClienteCadastrado - ClientesRemovidos] = Console.ReadLine();
                 do
-                {
+                {                    
                     Console.Write("RG   (10 digitos) : ");
                     RG[ClienteCadastrado - ClientesRemovidos] = Console.ReadLine();
                 } while (RG[ClienteCadastrado - ClientesRemovidos].Length != 10);
@@ -859,8 +862,7 @@ namespace Cyber_Car
                     Console.WriteLine(" ");
                     Console.WriteLine("Marca............: {0}", Marca[i]);
                     Console.WriteLine("Modelo...........: {0}", Modelo[i]);
-                    Console.WriteLine("Placa............: {0}", Placa[i]);
-                    Console.WriteLine("Cor..............: {0}", Cor[i]);
+                    Console.WriteLine("Placa............: {0}", Placa[i]);                    
                     Console.WriteLine("Valor Diária.....: {0} R$", ValorDiaria[i]);
                 }
                 Console.WriteLine("\n\nDeseja sair da tabela ?      (S/N)");
@@ -1016,17 +1018,22 @@ namespace Cyber_Car
                             {
                                 for (int j = Posicao; j < CarroCadastrado; j++)
                                 {
-                                    Marca[i] = Marca[i + 1];
-                                    Placa[i] = Placa[i + 1];
-                                    Cor[i] = Cor[i + 1];
-                                    Quilometragem[i] = Quilometragem[i + 1];
-                                    Situacao[i] = Situacao[i + 1];
-                                    DiasLocado[i] = DiasLocado[i + 1];
+                                    Marca[j] = Marca[j + 1];
+                                    Modelo[j] = Modelo[j + 1];
+                                    Placa[j] = Placa[j + 1];
+                                    Cor[j] = Cor[j + 1];
+                                    Quilometragem[j] = Quilometragem[j + 1];
+                                    Situacao[j] = Situacao[j + 1];
+                                    DiasLocado[j] = DiasLocado[j + 1];
                                 }
                                 CarrosRemovidos += 1;
                                 remover = 1;
                                 break;
                             }
+                        }
+                        if (remover == 1)
+                        {
+                            break ;
                         }
                         if (remover == 0)
                         {
@@ -1037,15 +1044,14 @@ namespace Cyber_Car
                             }
                         }
 
-                    } while (Tentativas != 0 || remover != 1);
+                    } while (Tentativas != 0);
                 }
             }
         }
         static void RemoverCliente()
         {
             int remover = 0;            
-            ConsultaCliente();
-            Console.Clear();
+            ConsultaCliente();            
             if (Achou == 1)
             {
                 Console.WriteLine("Tem certeza que deseja remover este cliente?");
@@ -1073,18 +1079,23 @@ namespace Cyber_Car
                             {
                                 for (int j = Posicao; j < ClienteCadastrado; j++)
                                 {
-                                    Nome[i] = Nome[i + 1];
-                                    RG[i] = RG[i + 1];
-                                    CPF[i] = CPF[i + 1];
-                                    for (int e = 0; j < 7; j++)
+                                    Nome[j] = Nome[j + 1];
+                                    RG[j] = RG[j + 1];
+                                    CPF[j] = CPF[j + 1];
+                                    Saldo[j] = Saldo[j + 1];
+                                    for (int e = 0; e < 7; e++)
                                     {
-                                        Endereco[i, e] = Endereco[i + 1, e];
+                                        Endereco[j, e] = Endereco[j + 1, e];
                                     }
                                 }
                                 ClientesRemovidos += 1;
                                 remover = 1;
                                 break;
                             }
+                        }
+                        if (remover == 1)
+                        {
+                            break;
                         }
                         if (remover == 0)
                         {
@@ -1095,7 +1106,7 @@ namespace Cyber_Car
                             }
                         }
 
-                    } while (Tentativas != 0 || remover != 1);
+                    } while (Tentativas != 0);
                 }
             }
         }
