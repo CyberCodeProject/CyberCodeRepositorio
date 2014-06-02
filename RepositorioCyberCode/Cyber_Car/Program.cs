@@ -17,7 +17,7 @@ namespace Cyber_Car
         static int Achou = 0;
         static string Resposta = null;
         static string SenhaTeste = null;
-        static string UsuarioTeste = null;
+        static string UsuarioTeste = null;        
         static int Posicao = 0;
         static int Tentativas = 3;
         static int CarrosRemovidos, ClientesRemovidos = 0;
@@ -50,6 +50,7 @@ namespace Cyber_Car
         static string[,] Endereco = new string[7, constante];
         //Endereço: Linha 1 = Pais; Linha 2= Estado; Linha 3 =Cidade; Linha 4= Rua; Linha 5 = Bairro; Linha 6 = Numero; Linha 7 = Complemento
 
+        //metodo principal... chama o login
         static void Main(string[] args)
         {
 
@@ -57,8 +58,8 @@ namespace Cyber_Car
             //Chamando o método MENU           
             Console.ReadKey();
         }
-
-
+        
+        //login chama o menu
         static void Login()
         {
             Achou = 0;
@@ -71,9 +72,9 @@ namespace Cyber_Car
             Console.WriteLine("║                     INFORME SUA SENHA E SEU LOGIN                      ║");
             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
             do{                
-                Console.Write("LOGIN: ");
+                Console.Write("\t\t\t\tLOGIN: ");
                 UsuarioTeste = Console.ReadLine();
-                Console.Write("SENHA: ");
+                Console.Write("\t\t\t\tSENHA: ");
                 SenhaTeste = Console.ReadLine();
                 Tentativas +=1;
                 for(int i = 0; i <5; i++)
@@ -81,7 +82,7 @@ namespace Cyber_Car
                     if (UsuarioTeste == Usuarios[i]){
                         if (SenhaTeste == Usuarios[i] + "123")
                         {
-                            Console.WriteLine("Login realizado com sucesso!");
+                            Console.WriteLine("Login realizado com sucesso!");                           
                             Achou += 1;
                             Console.ReadKey();
                             Menu();
@@ -105,9 +106,7 @@ namespace Cyber_Car
             }while(Tentativas != 3);
         }
 
-
         // Metodos dos Menus
-
         static void Menu()
         {
             do
@@ -156,10 +155,10 @@ namespace Cyber_Car
                         MenuAjuda();
                         break;
                     case "8":
-                        Console.WriteLine("O programa está sendo encerrado. Aperte qualquer tecla para continuar!");
+                        Console.WriteLine("\nO programa está sendo encerrado. Aperte qualquer tecla para continuar!");
                         break;
                     default:
-                        Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
+                        Console.WriteLine("Voce digitou uma opcao invalida! Aperte uma tecla para continuar.");
                         Console.ReadKey();
                         continue;
                 }
@@ -447,7 +446,6 @@ namespace Cyber_Car
         }
 
         // Metodos dos Itens
-
         static void Reserva()
         {
             do
@@ -1042,6 +1040,8 @@ namespace Cyber_Car
                 }
             }
         }
+    
+
         static void RemoverCliente()
         {
             int remover = 0;
