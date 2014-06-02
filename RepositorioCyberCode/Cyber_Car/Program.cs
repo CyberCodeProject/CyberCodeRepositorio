@@ -19,10 +19,10 @@ namespace Cyber_Car
         static string SenhaTeste = null;
         static string UsuarioTeste = null;        
         static int Posicao = 0;
-        static int Tentativas = 3;
+        static int Tentativas = 0;
         static int CarrosRemovidos, ClientesRemovidos = 0;
-        static double RendaMensal = 12234;
-        static double RendaCaixa = 2435;
+        static double RendaMensal = 0;
+        static double RendaCaixa = 0;
         static int PosicaoCliente = 0;
         static string[] Usuarios = { "aprigio", "luis", "mateus", "greicy", "thiago" };
         static int garagem = 0;
@@ -684,7 +684,7 @@ namespace Cyber_Car
                 Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
                 Console.Write("Marca: ");
                 Marca[CarroCadastrado - CarrosRemovidos] = Console.ReadLine();
-                Console.WriteLine("Modelo : ");
+                Console.Write("Modelo : ");
                 Modelo[CarroCadastrado - CarrosRemovidos] = Console.ReadLine();
                 do
                 {
@@ -957,6 +957,7 @@ namespace Cyber_Car
             Console.WriteLine("Temos {0} carros rodando.", rodando);
             Console.WriteLine("Temos {0} carros reservados.", reservado);
             Console.WriteLine("Dinheiro em caixa : {0} R$", RendaCaixa);
+            Console.WriteLine("\n\nAperte qualquer tecla para continuar!");
             Console.ReadKey();
         }
         static void RelatorioMes()
@@ -981,12 +982,12 @@ namespace Cyber_Car
             Console.WriteLine("Dinheiro : {0} R$", RendaMensal);
             Console.WriteLine("A receber : {0} R$", dinheiroFaltando);
             Console.WriteLine("Total = {0} R$", RendaMensal + dinheiroFaltando);
+            Console.WriteLine("\n\nAperte qualquer tecla para continuar!");
             Console.ReadKey();
-
         }
         static void RemoverCarro()
         {
-            int remover = 0;
+            int remover = 0;            
             ConsultaCarros();
             if (Achou == 1)
             {
@@ -1040,11 +1041,9 @@ namespace Cyber_Car
                 }
             }
         }
-    
-
         static void RemoverCliente()
         {
-            int remover = 0;
+            int remover = 0;            
             ConsultaCliente();
             Console.Clear();
             if (Achou == 1)
