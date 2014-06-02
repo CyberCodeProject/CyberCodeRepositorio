@@ -718,19 +718,16 @@ namespace Greicy
                 Pesquisa = null;
                 Achou = 0;
                 Opcao = null;
-                do
+                Console.Clear();
+                Console.WriteLine("\t\t\t CONSULTA DE CLIENTE :\n\n");
+                Console.Write("Digite o CPF do cliente : ");
+                Pesquisa = Console.ReadLine();
+                if (Pesquisa.Length != 11)
                 {
-                    Console.Clear();
-                    Console.WriteLine("\t\t\t CONSULTA DE CLIENTE :\n\n");
-                    Console.Write("Digite o CPF do cliente : ");
-                    Pesquisa = Console.ReadLine();
-                    if (Pesquisa.Length != 11)
-                    {
-                        Console.WriteLine("CPF invalido, digite no formato correto do CPF (11 digitos).");
-                        Console.ReadKey();
-                        continue;
-                    }
-                } while (Pesquisa.Length != 11);
+                    Console.WriteLine("CPF invalido, digite no formato correto do CPF (11 digitos).");
+                    Console.ReadKey();
+                    continue;
+                }
                 for (int i = 0; i < constante; i++)
                 {
                     if (Pesquisa == CPF[i])
@@ -768,8 +765,6 @@ namespace Greicy
                 Pesquisa = null;
                 Achou = 0;
                 Opcao = null;
-                do
-                {
                     Console.Clear();
                     Console.WriteLine("\t\t\t CONSULTA DE CARRO :\n\n");
                     Console.Write("Digite a placa do carro : ");
@@ -779,7 +774,6 @@ namespace Greicy
                         Console.WriteLine("Placa invalida, digite no formato correto da mesma (6 digitos, 3 letras e 3 numeros).");
                         continue;
                     }
-                } while (Pesquisa.Length != 6);
                 for (int i = 0; i < CarroCadastrado - CarrosRemovidos; i++)
                 {
                     if (Pesquisa == Placa[i])
