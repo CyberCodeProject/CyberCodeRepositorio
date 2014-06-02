@@ -570,7 +570,6 @@ namespace Luis
             do
             {
                 double km = 0;
-                int dia = 0;
                 Opcao = null;
                 Posicao = 0;
                 ConsultaCliente();
