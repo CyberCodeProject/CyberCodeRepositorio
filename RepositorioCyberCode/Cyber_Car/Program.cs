@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Greicy
+namespace Cyber_Car
 {
     class Program
     {
@@ -20,8 +20,8 @@ namespace Greicy
         static int Posicao = 0;
         static int Tentativas = 3;
         static int CarrosRemovidos, ClientesRemovidos = 0;
-        static double RendaMensal = 0;
-        static double RendaCaixa = 0;
+        static double RendaMensal = 12234;
+        static double RendaCaixa = 2435;
         static int PosicaoCliente = 0;
         static string[] Usuarios = { "aprigio", "luis", "mateus", "greicy", "thiago" };
         static int garagem = 0;
@@ -47,14 +47,14 @@ namespace Greicy
         static string[] CPF = new string[constante];
         static string[,] Endereco = new string[7, constante];
         //Endereço: Linha 1 = Pais; Linha 2= Estado; Linha 3 =Cidade; Linha 4= Rua; Linha 5 = Bairro; Linha 6 = Numero; Linha 7 = Complemento
-        
+
         static void Main(string[] args)
         {
             //Chamando o método MENU
-            Menu();           
+            Menu();
             Console.ReadKey();
         }
-        
+
         // Metodos dos Menus
 
         static void Menu()
@@ -105,7 +105,7 @@ namespace Greicy
                         MenuAjuda();
                         break;
                     case "8":
-                        Console.WriteLine("O programa está sendo encerrado. Aperte qualquer tecla para continuar!");                        
+                        Console.WriteLine("O programa está sendo encerrado. Aperte qualquer tecla para continuar!");
                         break;
                     default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
@@ -138,10 +138,10 @@ namespace Greicy
                     case "2":
                         //Chamar metodo cadastro cliente
                         CadastroCliente();
-                        break;                  
+                        break;
                     case "3":
                         break;
-                    default: 
+                    default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
@@ -181,10 +181,10 @@ namespace Greicy
                         //Chama o metodo de situação dos carros
                         SituacaoDosCarros();
                         break;
-                    case "4":  
+                    case "4":
                         //Chama o menu novamente
                         break;
-                    default: 
+                    default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
@@ -226,7 +226,7 @@ namespace Greicy
                         break;
                     case "4":
                         break;
-                    default: 
+                    default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
@@ -258,9 +258,9 @@ namespace Greicy
                         //Chamar metodo ALTERACAO cliente
                         AlterarCliente();
                         break;
-                    case "3":                        
+                    case "3":
                         break;
-                    default: 
+                    default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
@@ -295,7 +295,7 @@ namespace Greicy
                         //Chamar metodo REMOCAO cliente
                         RemoverCliente();
                         break;
-                    case "3":                     
+                    case "3":
                         break;
                     default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
@@ -385,16 +385,16 @@ namespace Greicy
                         //Chamar metodo RELATORIO do caixa
                         RelatorioCaixa();
                         break;
-                    case "5":                     
+                    case "5":
                         break;
                     default:
                         Console.WriteLine("Voce digitou uma opcao invalida! Tente novamente.");
                         Console.ReadKey();
                         continue;
                 }
-            } while (Opcao != "5");            
+            } while (Opcao != "5");
         }
- 
+
         // Metodos dos Itens
 
         static void Reserva()
@@ -455,9 +455,11 @@ namespace Greicy
                         {
                             Console.WriteLine("Fica pra próxima então, o carro está {0}.", Situacao[Posicao]);
                             Console.ReadKey();
-                        }else if (Opcao == "s")
+                        }
+                        else if (Opcao == "s")
                         {
-                            do{
+                            do
+                            {
                                 Console.WriteLine("\nDeseja locar o automovel quantos dias?");
                                 data = int.Parse(Console.ReadLine());
                                 if (data < 1 || data > 365)
@@ -465,14 +467,14 @@ namespace Greicy
                                     Console.WriteLine("Data incorreta, digite novamente.");
                                     Console.ReadKey();
                                 }
-                            }while(data < 1 && data >365);
+                            } while (data < 1 && data > 365);
                             Situacao[Posicao] = "Reservado";
                             DiasLocado[Posicao] += data;
                             Carro[PosicaoCliente] = Placa[Posicao];
                             reservado += 1;
-                               
+
                         }
-                         
+
                     }
                     Opcao = null;
                     Console.Write("\n\nDeseja tentar outra reserva ?     (S/N) ");
@@ -558,66 +560,66 @@ namespace Greicy
         }
         static void Devolucao()
         {
-                double km = 0;
-                Opcao = null;
-                Posicao = 0;
-                ConsultaCliente();
-                Console.Clear();
-                if (Achou == 1)
+            double km = 0;
+            Opcao = null;
+            Posicao = 0;
+            ConsultaCliente();
+            Console.Clear();
+            if (Achou == 1)
+            {
+                Console.WriteLine("Nome............: {0}", Nome[Posicao]);
+                Console.WriteLine("RG..............: {0}", RG[Posicao]);
+                Console.WriteLine("CPF.............: {0}", CPF[Posicao]);
+                Console.WriteLine("Saldo...........: {0}", Saldo[Posicao]);
+                Console.WriteLine("Placa do carro...:{0}", Carro[Posicao]);
+                PosicaoCliente = Posicao;
+                for (int i = 0; i < CarroCadastrado; i++)
                 {
-                    Console.WriteLine("Nome............: {0}", Nome[Posicao]);
-                    Console.WriteLine("RG..............: {0}", RG[Posicao]);
-                    Console.WriteLine("CPF.............: {0}", CPF[Posicao]);
-                    Console.WriteLine("Saldo...........: {0}", Saldo[Posicao]);
-                    Console.WriteLine("Placa do carro...:{0}", Carro[Posicao]);
-                    PosicaoCliente = Posicao;
-                    for (int i = 0; i < CarroCadastrado; i++)
+                    if (Carro[PosicaoCliente] == Placa[i])
                     {
-                        if (Carro[PosicaoCliente] == Placa[i])
-                        {
-                            Console.WriteLine("Marca....................: {0}", Marca[i]);
-                            Console.WriteLine("Placa....................: {0}", Placa[i]);
-                            Console.WriteLine("Cor......................: {0}", Cor[i]);
-                            Console.WriteLine("Quilometragem Inicial....: {0}", Quilometragem[i]);
-                        }
+                        Console.WriteLine("Marca....................: {0}", Marca[i]);
+                        Console.WriteLine("Placa....................: {0}", Placa[i]);
+                        Console.WriteLine("Cor......................: {0}", Cor[i]);
+                        Console.WriteLine("Quilometragem Inicial....: {0}", Quilometragem[i]);
                     }
-                    do
+                }
+                do
+                {
+                    Console.Write("Quilometragem da volta : ");
+                    km = double.Parse(Console.ReadLine());
+                    if (km < Quilometragem[Posicao])
                     {
-                        Console.Write("Quilometragem da volta : ");
-                        km = double.Parse(Console.ReadLine());
-                        if (km < Quilometragem[Posicao])
-                        {
-                            Console.WriteLine("Quilometragem errada, insira a correta.");
-                            Console.ReadKey();
-                            continue;
-                        }
-                        else
-                        {
-                            Quilometragem[Posicao] = km;
-                        }
-                    } while (km < Quilometragem[Posicao]);
-                    do
-                    {
-                        Console.WriteLine("Cliente devendo um saldo de {0}, deseja efetuar o pagamento ?   (S/N) ", Saldo[PosicaoCliente]);
-                        Opcao = Console.ReadLine();
-                        Opcao = Opcao.ToLower();
-                    } while (Opcao != "n" && Opcao != "s");
-                    if (Opcao == "s")
-                    {
-                        RendaMensal += Saldo[Posicao];
-                        RendaCaixa += Saldo[Posicao];
-                        Saldo[PosicaoCliente] = 0;
-                        garagem += 1;
-                        rodando -= 1;
+                        Console.WriteLine("Quilometragem errada, insira a correta.");
+                        Console.ReadKey();
+                        continue;
                     }
                     else
                     {
-                        Console.WriteLine("Voce precisa pagar, obtenha dinheiro !!");
-                        garagem += 1;
-                        rodando -= 1;
-                        Console.ReadKey();
+                        Quilometragem[Posicao] = km;
                     }
+                } while (km < Quilometragem[Posicao]);
+                do
+                {
+                    Console.WriteLine("Cliente devendo um saldo de {0}, deseja efetuar o pagamento ?   (S/N) ", Saldo[PosicaoCliente]);
+                    Opcao = Console.ReadLine();
+                    Opcao = Opcao.ToLower();
+                } while (Opcao != "n" && Opcao != "s");
+                if (Opcao == "s")
+                {
+                    RendaMensal += Saldo[Posicao];
+                    RendaCaixa += Saldo[Posicao];
+                    Saldo[PosicaoCliente] = 0;
+                    garagem += 1;
+                    rodando -= 1;
                 }
+                else
+                {
+                    Console.WriteLine("Voce precisa pagar, obtenha dinheiro !!");
+                    garagem += 1;
+                    rodando -= 1;
+                    Console.ReadKey();
+                }
+            }
         }
         static void CadastroCarro()
         {
@@ -744,15 +746,15 @@ namespace Greicy
                 Pesquisa = null;
                 Achou = 0;
                 Opcao = null;
-                    Console.Clear();
-                    Console.WriteLine("\t\t\t CONSULTA DE CARRO :\n\n");
-                    Console.Write("Digite a placa do carro : ");
-                    Pesquisa = Console.ReadLine();
-                    if (Pesquisa.Length != 6)
-                    {
-                        Console.WriteLine("Placa invalida, digite no formato correto da mesma (6 digitos, 3 letras e 3 numeros).");
-                        continue;
-                    }
+                Console.Clear();
+                Console.WriteLine("\t\t\t CONSULTA DE CARRO :\n\n");
+                Console.Write("Digite a placa do carro : ");
+                Pesquisa = Console.ReadLine();
+                if (Pesquisa.Length != 6)
+                {
+                    Console.WriteLine("Placa invalida, digite no formato correto da mesma (6 digitos, 3 letras e 3 numeros).");
+                    continue;
+                }
                 for (int i = 0; i < CarroCadastrado - CarrosRemovidos; i++)
                 {
                     if (Pesquisa == Placa[i])
@@ -1139,7 +1141,8 @@ namespace Greicy
                             break;
                         case "5":
                             do
-                            {   Console.WriteLine("(Garagem - Rodando - Reservado): ");
+                            {
+                                Console.WriteLine("(Garagem - Rodando - Reservado): ");
                                 Situacao[Posicao] = Console.ReadLine();
                             } while (Situacao[Posicao] != "Garagem" || Situacao[Posicao] != "Rodando" || Situacao[Posicao] != "Reservado");
                             break;
@@ -1156,6 +1159,7 @@ namespace Greicy
                     }
                 } while (Opcao != "8");
             }
-        }       
+        }
     }
 }
+

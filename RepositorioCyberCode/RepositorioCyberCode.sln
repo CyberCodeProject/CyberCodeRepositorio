@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mateus", "Mateus\Mateus.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aprigio", "Aprigio\Aprigio.csproj", "{2830BFDF-5EA4-4297-BE9D-EF2FFCBE2B0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyber_Car", "Cyber_Car\Cyber_Car.csproj", "{A6C88DAE-0BC7-4A15-BB41-EBB349A64FA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{2830BFDF-5EA4-4297-BE9D-EF2FFCBE2B0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2830BFDF-5EA4-4297-BE9D-EF2FFCBE2B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2830BFDF-5EA4-4297-BE9D-EF2FFCBE2B0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6C88DAE-0BC7-4A15-BB41-EBB349A64FA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C88DAE-0BC7-4A15-BB41-EBB349A64FA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C88DAE-0BC7-4A15-BB41-EBB349A64FA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C88DAE-0BC7-4A15-BB41-EBB349A64FA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
